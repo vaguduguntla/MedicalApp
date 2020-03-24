@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_my_profile"
+        android:icon="@drawable/me_menu_item"
+        android:title="Profile" />
+    <item
+        android:id="@+id/navigation_my_patients"
+        android:icon="@drawable/ic_doctor_stethoscope_svgrepo_com"
+        android:title="Patients" />
+    <item
+        android:id="@+id/navigation_my_network"
+        android:icon="@drawable/network_menu_item"
+        android:title="Network" />
+</menu>
