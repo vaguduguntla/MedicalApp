@@ -32,15 +32,15 @@ class MainActivity : AppCompatActivity() {
         object : BottomNavigationView.OnNavigationItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.getItemId()) {
-                    R.id.navigation_my_profile -> {
+                    R.id.fragment_my_profile -> {
                         openFragment(MyProfileFragment.newInstance("", ""))
                         return true
                     }
-                    R.id.navigation_my_patients -> {
+                    R.id.fragment_my_patients -> {
                         openFragment(MyPatientsFragment.newInstance("", ""))
                         return true
                     }
-                    R.id.navigation_my_network -> {
+                    R.id.fragment_my_network -> {
                         openFragment(MyNetworkFragment.newInstance("", ""))
                         return true
                     }
