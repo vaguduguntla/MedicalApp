@@ -6,7 +6,6 @@
     tools:context=".fragments.MyNetworkFragment"
     >
 
-
   <ImageView
       android:id="@+id/imageView"
       android:layout_width="200dp"
