@@ -9,4 +9,18 @@
     <string name="speciality">Pediatric Surgeon</string>
     <string name="phone_number_editable">0123456789</string>
     <string name="location_editable">1234 Main St. Ann Arbor, MI</string>
+    <string-array name="patient_names">
+        <item>Vaasu</item>
+        <item>Arjun</item>
+        <item>Zeb</item>
+        <item>Dana</item>
+        <item>Julia</item>
+        <item>Hanna</item>
+        <item>Kevin</item>
+        <item>Sam</item>
+        <item>Zeus</item>
+        <item>Aries</item>
+        <item>George</item>
+        <item>Poop</item>
+    </string-array>
 </resources>
