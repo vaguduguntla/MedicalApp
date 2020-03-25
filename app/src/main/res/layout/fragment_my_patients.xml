@@ -6,13 +6,15 @@
     tools:context=".fragments.MyNetworkFragment"
     >
 
+  <SearchView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="center_horizontal"
+      android:queryHint="Search for Patient by Name"
+      android:iconifiedByDefault="false" >
 
-  <ImageView
-      android:id="@+id/imageView"
-      android:layout_width="200dp"
-      android:layout_height="200dp"
-      android:layout_gravity="center"
-      android:src="@drawable/ic_doctor_stethoscope_svgrepo_com"
-      />
+  </SearchView>
+
+
 
 </FrameLayout>

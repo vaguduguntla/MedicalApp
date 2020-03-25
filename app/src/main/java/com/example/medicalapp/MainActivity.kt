@@ -14,7 +14,6 @@ import com.example.medicalapp.fragments.MyPatientsFragment
 import com.example.medicalapp.fragments.MyProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 class MainActivity : AppCompatActivity() {
     lateinit var bottomNavigation: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +22,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
         openFragment(MyProfileFragment.newInstance("", ""))
-
-
     }
 
     fun openFragment(fragment: Fragment) {
