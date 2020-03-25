@@ -7,29 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".fragments.MyNetworkFragment">
 
-  <EditText
-      android:id="@+id/Patient_Name_Search"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="48dp"
-      android:ems="10"
-      android:hint="Search Patient Name"
-      android:inputType="textPersonName"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.497"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+  <SearchView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="center_horizontal"
+      android:queryHint="Search for Patient by Name"
+      android:iconifiedByDefault="false" >
 
-  <ImageView
-      android:id="@+id/imageView3"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="60dp"
-      android:src="@drawable/ic_search_black_24dp"
-      app:layout_constraintEnd_toStartOf="@+id/Patient_Name_Search"
-      app:layout_constraintHorizontal_bias="1.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+  </SearchView>
 
   <LinearLayout
       android:layout_width="match_parent"
