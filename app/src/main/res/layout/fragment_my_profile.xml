@@ -7,12 +7,6 @@
     >
 
 
-  <TextView
-      android:id="@+id/Vaasu"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="TextView" />
-
   <ImageView
       android:id="@+id/imageView"
       android:layout_width="200dp"
