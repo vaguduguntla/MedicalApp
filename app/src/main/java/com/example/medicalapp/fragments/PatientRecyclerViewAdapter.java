@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
-
+import android.util.Log;
 
 public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecyclerViewAdapter.PatientViewHolder> {
     MyPatientsFragment ct;
@@ -36,7 +36,7 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
 
     @Override
     public int getItemCount() {
-        return 0;
+        return PatientNamesList.length;
     }
 
     public class PatientViewHolder extends RecyclerView.ViewHolder {

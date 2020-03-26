@@ -57,12 +57,6 @@ public class MyPatientsFragment extends Fragment {
       mParam1 = getArguments().getString(ARG_PARAM1);
       mParam2 = getArguments().getString(ARG_PARAM2);
     }
-    PatientNamesList = getResources().getStringArray(R.array.patient_names);
-    patientRecyclerView = patientRecyclerView.findViewById(R.id.patient_name_recycler_view);
-    PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(, PatientNamesList);
-    patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
-    patientRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-    //PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(this, PatientNamesList);
 
   }
 
@@ -71,5 +65,16 @@ public class MyPatientsFragment extends Fragment {
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     return inflater.inflate(R.layout.fragment_my_patients, container, false);
+  }
+
+  @Override
+  public void onViewCreated(View view, Bundle savedInstanceState) {
+    super.onViewCreated(view,savedInstanceState);
+    PatientNamesList = getResources().getStringArray(R.array.patient_names);
+    patientRecyclerView = view.findViewById(R.id.patient_name_recycler_view);
+    PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList);
+    patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
+    patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    //PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(this, PatientNamesList);
   }
 }
