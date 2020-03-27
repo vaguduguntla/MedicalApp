@@ -31,6 +31,7 @@ public class MyPatientsFragment extends Fragment {
   }
 
   String PatientNamesList[];
+  int image = R.drawable.ic_account_circle_black_24dp;
   RecyclerView patientRecyclerView;
   /**
    * Use this factory method to create a new instance of
@@ -72,7 +73,7 @@ public class MyPatientsFragment extends Fragment {
     super.onViewCreated(view,savedInstanceState);
     PatientNamesList = getResources().getStringArray(R.array.patient_names);
     patientRecyclerView = view.findViewById(R.id.patient_name_recycler_view);
-    PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList);
+    PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList, image);
     patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
     patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     //PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(this, PatientNamesList);

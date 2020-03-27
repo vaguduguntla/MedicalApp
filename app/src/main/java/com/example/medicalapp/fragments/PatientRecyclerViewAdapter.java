@@ -10,14 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
-import android.util.Log;
 
 public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecyclerViewAdapter.PatientViewHolder> {
     MyPatientsFragment ct;
+    int image;
     Context context;
     String PatientNamesList[];
 
-    public PatientRecyclerViewAdapter(Context ct, String[] s1){
+    public PatientRecyclerViewAdapter(Context ct, String[] s1, int img){
+        image = img;
         context = ct;
         PatientNamesList = s1;
     }
