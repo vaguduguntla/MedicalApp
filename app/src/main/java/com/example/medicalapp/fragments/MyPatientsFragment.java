@@ -2,8 +2,10 @@ package com.example.medicalapp.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -51,6 +53,7 @@ public class MyPatientsFragment extends Fragment {
     return fragment;
   }
 
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -58,13 +61,13 @@ public class MyPatientsFragment extends Fragment {
       mParam1 = getArguments().getString(ARG_PARAM1);
       mParam2 = getArguments().getString(ARG_PARAM2);
     }
-
   }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
+    setHasOptionsMenu(true);
     return inflater.inflate(R.layout.fragment_my_patients, container, false);
   }
 
@@ -76,6 +79,7 @@ public class MyPatientsFragment extends Fragment {
     PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList, image);
     patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
     patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    //PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(this, PatientNamesList);
   }
+
+
 }
