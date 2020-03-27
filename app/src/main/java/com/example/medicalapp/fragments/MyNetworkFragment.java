@@ -27,7 +27,8 @@ public class MyNetworkFragment extends Fragment {
   public MyNetworkFragment() {
     // Required empty public constructor
   }
-
+  String DoctorNamesList[];
+  int img;
   /**
    * Use this factory method to create a new instance of
    * this fragment using the provided parameters.
@@ -59,6 +60,6 @@ public class MyNetworkFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_my_network, container, false);
+    return inflater.inflate(R.layout.fragment_my_patients, container, false);
   }
 }

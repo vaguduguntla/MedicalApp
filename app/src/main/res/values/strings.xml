@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MedicalApp</string>
+    <string name="app_name"></string>
     <string name="list_of_hours">Monday: 10 AM - 5 PM
     \n\nTuesday: 9 AM - 5 PM
     \n\nWednesday: OFF
@@ -22,5 +22,19 @@
         <item>Aries</item>
         <item>George</item>
         <item>Poop</item>
+    </string-array>
+    <string-array name="doctor_names">
+        <item>Dr. Lama</item>
+        <item>Dr. Kleinsborg</item>
+        <item>Dr. Guduguntla</item>
+        <item>Dr. Shah</item>
+        <item>Dr. Smith</item>
+        <item>Dr. Patel</item>
+        <item>Dr. Williams</item>
+        <item>Dr. Zhang</item>
+        <item>Dr. Poop</item>
+        <item>Dr. Lil Peep</item>
+        <item>Dr. Lil Xan</item>
+        <item>Dr. JuiceWrld</item>
     </string-array>
 </resources>
