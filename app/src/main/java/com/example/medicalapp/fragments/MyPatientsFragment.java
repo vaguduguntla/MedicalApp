@@ -79,19 +79,8 @@ public class MyPatientsFragment extends Fragment {
     PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList, image);
     patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
     patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    CardView cardView = (CardView) view.findViewById(R.id.Names);
-    if(cardView==null){
-      Log.d("Null","Null");
-    }
-    cardView.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v){
-        Log.d("Click", "Works");
-        //Inflate New View
-      }
-    });
-
   }
+
 
 
 }

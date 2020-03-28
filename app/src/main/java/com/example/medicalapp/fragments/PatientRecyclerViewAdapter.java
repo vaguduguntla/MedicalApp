@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import android.util.Log;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
@@ -45,6 +47,17 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
         public PatientViewHolder(@NonNull View itemView) {
             super(itemView);
             patient_names = itemView.findViewById(R.id.names);
+            CardView cardView = (CardView)itemView.findViewById(R.id.Names);
+            if(cardView==null){
+                Log.d("Null","Null");
+            }
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v){
+                    Log.d("Click", "Works");
+                    //Inflate New View
+                }
+            });
         }
     }
 }

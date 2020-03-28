@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
         if (currentFragment is MyPatientsFragment) {
 
             val inflater: MenuInflater = menuInflater
-            //supportActionBar?.setDisplayShowTitleEnabled(false)
-            //supportActionBar?.setDisplayShowHomeEnabled(false)
+            supportActionBar?.setDisplayShowTitleEnabled(false)
+            supportActionBar?.setDisplayShowHomeEnabled(false)
             inflater.inflate(R.menu.search_menu, menu)
             val searchItem: MenuItem = menu!!.findItem(R.id.search_bar)
             val searchBar: SearchView = searchItem.actionView as SearchView
