@@ -52,8 +52,6 @@ class MainActivity : AppCompatActivity() {
         return super.onPrepareOptionsMenu(menu)
     }
 
-
-
     fun openFragment(fragment: Fragment) {
         Log.d("GOT HERE", "HI")
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
