@@ -1,6 +1,7 @@
 package com.example.medicalapp.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.widget.TextView;
 
 import android.util.Log;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.R;
 
 public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecyclerViewAdapter.PatientViewHolder> {
@@ -44,10 +47,10 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
 
     public class PatientViewHolder extends RecyclerView.ViewHolder {
         TextView patient_names;
-        public PatientViewHolder(@NonNull View itemView) {
+        public PatientViewHolder(@NonNull final View itemView) {
             super(itemView);
             patient_names = itemView.findViewById(R.id.names);
-            CardView cardView = (CardView)itemView.findViewById(R.id.Names);
+            final CardView cardView = (CardView)itemView.findViewById(R.id.Names);
             if(cardView==null){
                 Log.d("Null","Null");
             }
@@ -56,6 +59,8 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
                 public void onClick(View v){
                     Log.d("Click", "Works");
                     //Inflate New View
+                    MainActivity currentActivity = (MainActivity) v.getContext();
+                    currentActivity.openFragment(PatientProfileFragment.newInstance("",""));
                 }
             });
         }
