@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">MedicalApp</string>
     <string name="list_of_hours">Monday: 10 AM - 5 PM
     \n\nTuesday: 9 AM - 5 PM
     \n\nWednesday: OFF
@@ -40,5 +40,24 @@
         <item>Dr. Lil Peep</item>
         <item>Dr. Lil Xan</item>
         <item>Dr. JuiceWrld</item>
+    </string-array>
+    <string-array name="record_name">
+        <item>CT Scan</item>
+        <item>STD Test</item>
+        <item>Allergy Test</item>
+        <item>Physical Examination</item>
+
+    </string-array>
+    <string-array name="type_of_record">
+        <item>Report</item>
+        <item>Lab</item>
+        <item>Lab</item>
+        <item>Doctors Notes</item>
+    </string-array>
+    <string-array name="date">
+        <item>10/12/2019</item>
+        <item>6/10/2018</item>
+        <item>5/11/2017</item>
+        <item>7/13/2016</item>
     </string-array>
 </resources>
