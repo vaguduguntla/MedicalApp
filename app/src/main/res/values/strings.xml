@@ -54,7 +54,7 @@
         <item>Lab</item>
         <item>Doctors Notes</item>
     </string-array>
-    <string-array name="date">
+    <string-array name="record_date">
         <item>10/12/2019</item>
         <item>6/10/2018</item>
         <item>5/11/2017</item>
