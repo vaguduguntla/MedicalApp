@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/patient_name_recycler_view"
+            android:id="@+id/names_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -42,10 +42,10 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/add_patient_button"
+            android:id="@+id/add_user_button"
             android:layout_width="match_parent"
             android:layout_height="59dp"
-            android:text="Add New Patient"
+            android:text="@string/add_new_patient"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

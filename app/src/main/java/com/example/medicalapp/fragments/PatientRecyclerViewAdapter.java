@@ -26,7 +26,7 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
     @Override
     public PatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.patient_names_row, parent, false);
+        View view = inflater.inflate(R.layout.names_row, parent, false);
         return new PatientViewHolder(view);
     }
 
@@ -44,7 +44,7 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
         TextView patient_names;
         public PatientViewHolder(@NonNull View itemView) {
             super(itemView);
-            patient_names = itemView.findViewById(R.id.patient_names);
+            patient_names = itemView.findViewById(R.id.names);
         }
     }
 }

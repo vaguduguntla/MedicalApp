@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
 
@@ -28,7 +31,8 @@ public class MyNetworkFragment extends Fragment {
     // Required empty public constructor
   }
   String DoctorNamesList[];
-  int img;
+  int img = R.drawable.ic_doctor;
+  RecyclerView doctorReyclerView;
   /**
    * Use this factory method to create a new instance of
    * this fragment using the provided parameters.
@@ -60,6 +64,17 @@ public class MyNetworkFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_my_patients, container, false);
+    return inflater.inflate(R.layout.fragment_users, container, false);
+  }
+
+  public void onViewCreated(View view, Bundle savedInstanceState){
+    super.onViewCreated(view, savedInstanceState);
+    DoctorNamesList = getResources().getStringArray(R.array.doctor_names);
+    doctorReyclerView = view.findViewById(R.id.names_recycler_view);
+    Button btn = (Button) view.findViewById(R.id.add_user_button);
+    btn.setText(getResources().getString(R.string.add_new_doctor));
+    DoctorRecyclerViewAdapter doctorRecyclerViewAdapter = new DoctorRecyclerViewAdapter(DoctorNamesList, getContext(), img);
+    doctorReyclerView.setAdapter(doctorRecyclerViewAdapter);
+    doctorReyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
   }
 }

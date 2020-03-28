@@ -1,12 +1,12 @@
 package com.example.medicalapp.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -68,17 +68,29 @@ public class MyPatientsFragment extends Fragment {
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     setHasOptionsMenu(true);
-    return inflater.inflate(R.layout.fragment_my_patients, container, false);
+    return inflater.inflate(R.layout.fragment_users, container, false);
   }
 
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view,savedInstanceState);
     PatientNamesList = getResources().getStringArray(R.array.patient_names);
-    patientRecyclerView = view.findViewById(R.id.patient_name_recycler_view);
+    patientRecyclerView = view.findViewById(R.id.names_recycler_view);
     PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList, image);
     patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
     patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    CardView cardView = (CardView) view.findViewById(R.id.Names);
+    if(cardView==null){
+      Log.d("Null","Null");
+    }
+    cardView.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v){
+        Log.d("Click", "Works");
+        //Inflate New View
+      }
+    });
+
   }
 
 

@@ -9,6 +9,8 @@
     <string name="speciality">Pediatric Surgeon</string>
     <string name="phone_number_editable">0123456789</string>
     <string name="location_editable">1234 Main St. Ann Arbor, MI</string>
+    <string name="add_new_patient">Add New Patient</string>
+    <string name="add_new_doctor">Add New Doctor</string>
     <string-array name="patient_names">
         <item>Vaasu</item>
         <item>Arjun</item>
