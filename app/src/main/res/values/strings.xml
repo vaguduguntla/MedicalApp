@@ -11,6 +11,8 @@
     <string name="location_editable">1234 Main St. Ann Arbor, MI</string>
     <string name="add_new_patient">Add New Patient</string>
     <string name="add_new_doctor">Add New Doctor</string>
+    <string name="medical_records">Medical Records</string>
+    <string name="medications">Medications</string>
     <string-array name="patient_names">
         <item>Vaasu</item>
         <item>Arjun</item>
