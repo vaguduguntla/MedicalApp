@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.R;
+import android.util.Log;
 
 public class PatientProfileFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -57,5 +60,20 @@ public class PatientProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_patient_profile, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view,savedInstanceState);
+        Button medicalRecordsButton = view.findViewById(R.id.Medical_Records_Button);
+        medicalRecordsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Log.d("Click", "WorksFR");
+                //Inflate New View
+                MainActivity currentActivity = (MainActivity)getActivity();
+                currentActivity.openFragment(MedicalRecordsFragment.newInstance("",""));
+            }
+        });
     }
 }
