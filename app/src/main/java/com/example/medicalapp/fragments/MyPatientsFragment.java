@@ -31,7 +31,7 @@ public class MyPatientsFragment extends Fragment {
   }
 
   String PatientNamesList[];
-  int image = R.drawable.ic_account_circle_black_24dp;
+  int image [] = {R.drawable.ic_account_circle_black_24dp};
   RecyclerView patientRecyclerView;
   /**
    * Use this factory method to create a new instance of

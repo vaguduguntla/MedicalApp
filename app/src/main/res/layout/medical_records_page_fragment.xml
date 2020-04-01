@@ -28,6 +28,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/medical_records_recycler_view"
+            android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -44,10 +45,11 @@
             android:id="@+id/record_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
             android:layout_marginTop="24dp"
             android:text="Type"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.147"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

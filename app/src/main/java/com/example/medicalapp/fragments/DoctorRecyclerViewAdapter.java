@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
     @Override
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
         holder.doctors_names.setText(DoctorNamesList[position]);
+        holder.imageView.setImageResource(image);
 
     }
 
@@ -44,9 +46,11 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
 
     public class DoctorViewHolder extends RecyclerView.ViewHolder {
         TextView doctors_names;
+        ImageView imageView;
         public DoctorViewHolder(@NonNull View itemView) {
             super(itemView);
             doctors_names = itemView.findViewById(R.id.names);
+            imageView = itemView.findViewById(R.id.image_next_to_name);
         }
     }
 
