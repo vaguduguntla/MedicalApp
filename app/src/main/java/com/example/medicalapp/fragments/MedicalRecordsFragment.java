@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
+import com.example.medicalapp.okhttp;
 
 public class MedicalRecordsFragment extends PatientProfileFragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -50,7 +51,6 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
@@ -68,7 +68,7 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
         MedicalRecordsRecyclerViewAdapter adapter = new MedicalRecordsRecyclerViewAdapter(getContext(),recordName,recordType,Date);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
+        okhttp ok = new okhttp();
+        ok.run_request_and_handle_response();
     }
 }
