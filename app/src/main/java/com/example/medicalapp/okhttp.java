@@ -19,7 +19,12 @@ public class okhttp {
             .readTimeout(30, TimeUnit.SECONDS)
             .build();
 
-    String url = "https://amh3vre134.execute-api.us-east-2.amazonaws.com/default/foo?allusers";
+
+    String url = "https://amh3vre134.execute-api.us-east-2.amazonaws.com/default/foo?";
+
+    public void appendUrl(String parameters) {
+        this.url += parameters;
+    }
 
     Request request = new Request.Builder()
             .url(url)
