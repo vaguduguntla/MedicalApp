@@ -68,8 +68,5 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
         MedicalRecordsRecyclerViewAdapter adapter = new MedicalRecordsRecyclerViewAdapter(getContext(),recordName,recordType,Date);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        okhttp ok = new okhttp();
-        ok.appendUrl("alldoctors");
-        ok.run_request_and_handle_response();
     }
 }

@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
-
+import com.example.medicalapp.okhttp;
+import android.util.Log;
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MyPatientsFragment#newInstance} factory method to
@@ -74,11 +75,18 @@ public class MyPatientsFragment extends Fragment {
     super.onViewCreated(view,savedInstanceState);
     PatientNamesList = getResources().getStringArray(R.array.patient_names);
     patientRecyclerView = view.findViewById(R.id.names_recycler_view);
+    okhttp ok = new okhttp();
+    ok.appendUrl("name_users");
+    try {
+      String[] data = ok.run_request_and_handle_response();
+      PatientNamesList = data;
+      Log.d("data",data[0]);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
     PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList, image);
     patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
     patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
   }
-
-
 
 }

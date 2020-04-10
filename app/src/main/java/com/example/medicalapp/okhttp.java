@@ -26,26 +26,45 @@ public class okhttp {
         this.url += parameters;
     }
 
-    Request request = new Request.Builder()
-            .url(url)
-            .build();
+    public String[] run_request_and_handle_response() throws InterruptedException {
 
-    public void run_request_and_handle_response() {
+        final String[] myResponse = new String[1];
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
         client.newCall(request).
 
                 enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        e.printStackTrace();
+                        synchronized (myResponse) {
+                            e.printStackTrace();
+                            myResponse[0] = "FAIL";
+                            myResponse.notify();
+                        }
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        if (response.isSuccessful()) {
-                            String myResponse = response.body().string();
-                            Log.d("response", myResponse);
+                        synchronized (myResponse) {
+                            if (response.isSuccessful()) {
+                                myResponse[0] = response.body().string();
+                                Log.d("response", myResponse[0]);
+                            } else {
+                                myResponse[0] = "RESPONSE_FAIL";
+                            }
+                            myResponse.notify();
                         }
                     }
                 });
+
+        synchronized (myResponse) {
+            while (myResponse[0] == null) {
+                myResponse.wait();
+            }
+            return myResponse;
+        }
     }
 }
