@@ -26,6 +26,12 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
         context = ct;
         PatientNamesList = s1;
     }
+
+    public void updateList(String[] newArr) {
+        PatientNamesList = newArr;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public PatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

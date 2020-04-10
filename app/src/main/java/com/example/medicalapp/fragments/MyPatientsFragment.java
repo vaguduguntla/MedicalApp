@@ -3,8 +3,10 @@ package com.example.medicalapp.fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,12 +18,15 @@ import com.example.medicalapp.okhttp;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MyPatientsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyPatientsFragment extends Fragment {
+public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTextListener {
   // TODO: Rename parameter arguments, choose names that match
   // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
   private static final String ARG_PARAM1 = "param1";
@@ -36,6 +41,7 @@ public class MyPatientsFragment extends Fragment {
   }
 
   String PatientNamesList[];
+
   int image [] = {R.drawable.ic_account_circle_black_24dp};
   RecyclerView patientRecyclerView;
   /**
@@ -97,6 +103,36 @@ public class MyPatientsFragment extends Fragment {
     PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList, image);
     patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
     patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+  }
+
+
+  @Override
+  public boolean onQueryTextSubmit(String query) {
+    return false;
+  }
+
+  @Override
+  public boolean onQueryTextChange(String newText) {
+
+    String userInput = newText.toLowerCase();
+
+    List<String> newList = new ArrayList<>();
+
+    for (int i=0;i<PatientNamesList.length;++i) {
+      if (PatientNamesList[i].toLowerCase().contains(userInput)) {
+        newList.add(PatientNamesList[i]);
+      }
+    }
+
+    String[] updatedResults = new String[newList.size()];
+
+    for (int i=0;i<newList.size();++i){
+      updatedResults[i] = newList.get(i);
+    }
+
+    ((PatientRecyclerViewAdapter)patientRecyclerView.getAdapter()).updateList(updatedResults);
+
+    return true;
   }
 
 

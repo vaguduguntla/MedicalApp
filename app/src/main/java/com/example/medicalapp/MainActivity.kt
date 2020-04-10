@@ -2,7 +2,6 @@ package com.example.medicalapp
 
 
 
-import android.icu.text.CaseMap
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -10,9 +9,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isNotEmpty
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.medicalapp.fragments.MyNetworkFragment
 import com.example.medicalapp.fragments.MyPatientsFragment
@@ -46,6 +43,10 @@ class MainActivity : AppCompatActivity() {
             val searchBar: SearchView = searchItem.actionView as SearchView
             searchBar.isIconifiedByDefault = false
             searchBar.queryHint = "Search for Patient by Name"
+
+            val menuItem: MenuItem = menu.findItem(R.id.search_bar)
+            val searchView = menuItem.actionView as SearchView
+            searchView.setOnQueryTextListener(currentFragment)
         }
 
 
