@@ -12,6 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.medicalapp.R;
 import com.example.medicalapp.okhttp;
 import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MyPatientsFragment#newInstance} factory method to
@@ -79,11 +84,17 @@ public class MyPatientsFragment extends Fragment {
     ok.appendUrl("name_users");
     try {
       String[] data = ok.run_request_and_handle_response();
-      PatientNamesList = data;
+      JSONArray jsonArr = new JSONArray(data[0]);
+      String[] PatientNames = new String[jsonArr.length()];
+      for (int i=0;i<jsonArr.length();++i) {
+        PatientNames[i] = jsonArr.getJSONObject(i).getString("name");
+      }
+      PatientNamesList = PatientNames;
       Log.d("data",data[0]);
-    } catch (InterruptedException e) {
+    } catch (InterruptedException | JSONException e) {
       e.printStackTrace();
     }
+
     PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList, image);
     patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
     patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
