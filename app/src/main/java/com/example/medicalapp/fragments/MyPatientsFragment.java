@@ -1,6 +1,7 @@
 package com.example.medicalapp.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
 import com.example.medicalapp.okhttp;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -99,5 +98,6 @@ public class MyPatientsFragment extends Fragment {
     patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
     patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
   }
+
 
 }

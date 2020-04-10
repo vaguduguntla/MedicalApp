@@ -4,10 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--Search view widget as item in menu-->
+
     <item
         android:id="@+id/search_bar"
         android:title="Search"
+        android:icon="@drawable/ic_search_black_24dp"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="ifRoom|withText"
+        app:showAsAction="ifRoom|collapseActionView"
         />
 </menu>
