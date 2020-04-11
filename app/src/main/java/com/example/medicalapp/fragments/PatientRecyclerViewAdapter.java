@@ -15,19 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.R;
 
-public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecyclerViewAdapter.PatientViewHolder> {
-    MyPatientsFragment ct;
-    int image[];
-    Context context;
-    String PatientNamesList[];
+import java.util.ArrayList;
 
-    public PatientRecyclerViewAdapter(Context ct, String[] s1, int img[]){
-        image = img;
+public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecyclerViewAdapter.PatientViewHolder> {
+    ArrayList<Patients> PatientNamesList;
+    Context context;
+   // String PatientNamesList[];
+
+    public PatientRecyclerViewAdapter(Context ct, ArrayList<Patients> s1){
         context = ct;
         PatientNamesList = s1;
     }
 
-    public void updateList(String[] newArr) {
+    public void updateList(ArrayList<Patients> newArr) {
         PatientNamesList = newArr;
         notifyDataSetChanged();
     }
@@ -42,13 +42,13 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
 
     @Override
     public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
-        holder.patient_names.setText(PatientNamesList[position]);
-        holder.imageView.setImageResource(image[0]);
+        holder.patient_names.setText(PatientNamesList.get(position).Name);
+        holder.imageView.setImageResource(PatientNamesList.get(position).image);
     }
 
     @Override
     public int getItemCount() {
-        return PatientNamesList.length;
+        return PatientNamesList.size();
     }
 
     public class PatientViewHolder extends RecyclerView.ViewHolder {
@@ -66,9 +66,12 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
                 @Override
                 public void onClick(View v){
                     Log.d("Click", "Works");
+                    String clickedID = PatientNamesList.get(getAdapterPosition()).getPid();
+
+
                     //Inflate New View
                     MainActivity currentActivity = (MainActivity) v.getContext();
-                    currentActivity.openFragment(PatientProfileFragment.newInstance("",""));
+                    currentActivity.openFragment(PatientProfileFragment.newInstance(clickedID));
                 }
             });
         }

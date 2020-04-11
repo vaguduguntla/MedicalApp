@@ -3,7 +3,6 @@ package com.example.medicalapp.fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
@@ -19,7 +18,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,9 +38,9 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
     // Required empty public constructor
   }
 
-  String PatientNamesList[];
+  ArrayList<Patients> PatientNamesList = new ArrayList<Patients>();
 
-  int image [] = {R.drawable.ic_account_circle_black_24dp};
+
   RecyclerView patientRecyclerView;
   /**
    * Use this factory method to create a new instance of
@@ -83,24 +81,22 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view,savedInstanceState);
-    PatientNamesList = getResources().getStringArray(R.array.patient_names);
     patientRecyclerView = view.findViewById(R.id.names_recycler_view);
     okhttp ok = new okhttp();
     ok.appendUrl("name_users");
     try {
       String[] data = ok.run_request_and_handle_response();
       JSONArray jsonArr = new JSONArray(data[0]);
-      String[] PatientNames = new String[jsonArr.length()];
+
       for (int i=0;i<jsonArr.length();++i) {
-        PatientNames[i] = jsonArr.getJSONObject(i).getString("name");
+        PatientNamesList.add(new Patients("1", jsonArr.getJSONObject(i).getString("name")));
       }
-      PatientNamesList = PatientNames;
       Log.d("data",data[0]);
     } catch (InterruptedException | JSONException e) {
       e.printStackTrace();
     }
 
-    PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList, image);
+    PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList);
     patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
     patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
   }
@@ -116,21 +112,14 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
 
     String userInput = newText.toLowerCase();
 
-    List<String> newList = new ArrayList<>();
+    ArrayList<Patients> newList = new ArrayList<>();
 
-    for (int i=0;i<PatientNamesList.length;++i) {
-      if (PatientNamesList[i].toLowerCase().contains(userInput)) {
-        newList.add(PatientNamesList[i]);
+    for (int i=0;i<PatientNamesList.size();++i) {
+      if (PatientNamesList.get(i).Name.toLowerCase().contains(userInput)) {
+        newList.add(PatientNamesList.get(i));
       }
     }
-
-    String[] updatedResults = new String[newList.size()];
-
-    for (int i=0;i<newList.size();++i){
-      updatedResults[i] = newList.get(i);
-    }
-
-    ((PatientRecyclerViewAdapter)patientRecyclerView.getAdapter()).updateList(updatedResults);
+    ((PatientRecyclerViewAdapter)patientRecyclerView.getAdapter()).updateList(newList);
 
     return true;
   }
