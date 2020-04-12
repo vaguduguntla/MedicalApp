@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
-import com.example.medicalapp.okhttp;
+
+import java.util.ArrayList;
 
 public class MedicalRecordsFragment extends PatientProfileFragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -25,7 +26,7 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
         // Required empty public constructor
     }
     RecyclerView recyclerView;
-    String recordName[],recordType[],Date[];
+    ArrayList<MedicalRecord> MedicalRecordsList = new ArrayList<MedicalRecord>();
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -61,11 +62,7 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
     }
     public void onViewCreated(View view, Bundle savedInstanceState){
         recyclerView = view.findViewById(R.id.medical_records_recycler_view);
-        recordName = getResources().getStringArray(R.array.record_name);
-        recordType = getResources().getStringArray(R.array.type_of_record);
-        Date = getResources().getStringArray(R.array.record_date);
-
-        MedicalRecordsRecyclerViewAdapter adapter = new MedicalRecordsRecyclerViewAdapter(getContext(),recordName,recordType,Date);
+        MedicalRecordsRecyclerViewAdapter adapter = new MedicalRecordsRecyclerViewAdapter(getContext(),MedicalRecordsList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

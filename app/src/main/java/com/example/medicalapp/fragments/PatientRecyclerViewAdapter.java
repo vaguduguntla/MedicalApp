@@ -24,7 +24,7 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
 
     public PatientRecyclerViewAdapter(Context ct, ArrayList<Patients> s1){
         context = ct;
-        PatientNamesList = s1;
+        PatientNamesList = new ArrayList<>(s1);
     }
 
     public void updateList(ArrayList<Patients> newArr) {

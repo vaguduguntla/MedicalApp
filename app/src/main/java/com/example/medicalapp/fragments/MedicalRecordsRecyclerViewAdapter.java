@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
 
+import java.util.ArrayList;
+
 public class MedicalRecordsRecyclerViewAdapter extends RecyclerView.Adapter<MedicalRecordsRecyclerViewAdapter.MedicalRecordsViewHolder> {
-    String recordName[],recordType[],Date[];
+    ArrayList<MedicalRecord> MedicalRecordsList;
     Context context;
-    public MedicalRecordsRecyclerViewAdapter(Context ct, String s1[], String s2[], String s3[]){
+    public MedicalRecordsRecyclerViewAdapter(Context ct, ArrayList<MedicalRecord> List){
         context = ct;
-        recordName = s1;
-        recordType = s2;
-        Date = s3;
+        MedicalRecordsList = new ArrayList<>(List);
     }
 
     @NonNull
@@ -31,24 +31,24 @@ public class MedicalRecordsRecyclerViewAdapter extends RecyclerView.Adapter<Medi
 
     @Override
     public void onBindViewHolder(@NonNull MedicalRecordsViewHolder holder, int position) {
-        holder.t1.setText(recordName[position]);
-        holder.t2.setText(recordType[position]);
-        holder.t3.setText(Date[position]);
+        holder.NameText.setText(MedicalRecordsList.get(position).Name);
+        holder.TypeText.setText(MedicalRecordsList.get(position).Type);
+        holder.DateText.setText(MedicalRecordsList.get(position).Date);
 
     }
 
     @Override
     public int getItemCount() {
-        return recordName.length;
+        return MedicalRecordsList.size();
     }
 
     public class MedicalRecordsViewHolder extends RecyclerView.ViewHolder {
-        TextView t1, t2, t3;
+        TextView NameText, TypeText, DateText;
         public MedicalRecordsViewHolder(@NonNull View itemView) {
             super(itemView);
-            t1 = itemView.findViewById(R.id.Record_Name);
-            t2 = itemView.findViewById(R.id.Type);
-            t3 = itemView.findViewById(R.id.Date);
+            NameText = itemView.findViewById(R.id.Record_Name);
+            TypeText = itemView.findViewById(R.id.Type);
+            DateText = itemView.findViewById(R.id.Date);
         }
     }
 }
