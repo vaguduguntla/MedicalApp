@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
 
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MyNetworkFragment#newInstance} factory method to
@@ -30,7 +32,8 @@ public class MyNetworkFragment extends Fragment {
   public MyNetworkFragment() {
     // Required empty public constructor
   }
-  String DoctorNamesList[];
+  ArrayList<Users> DoctorNamesList = new ArrayList<>();
+  String TempList[];
   int img = R.drawable.ic_doctor;
   RecyclerView doctorReyclerView;
   /**
@@ -69,7 +72,16 @@ public class MyNetworkFragment extends Fragment {
 
   public void onViewCreated(View view, Bundle savedInstanceState){
     super.onViewCreated(view, savedInstanceState);
-    DoctorNamesList = getResources().getStringArray(R.array.doctor_names);
+    TempList = getResources().getStringArray(R.array.doctor_names);
+
+
+    //Will Change Once Backend is finished
+    for(int i = 0; i<TempList.length; i++) {
+      DoctorNamesList.add(new Users("1",TempList[i]));
+    }
+
+    //
+
     doctorReyclerView = view.findViewById(R.id.names_recycler_view);
     Button btn = (Button) view.findViewById(R.id.add_user_button);
     btn.setText(getResources().getString(R.string.add_new_doctor));

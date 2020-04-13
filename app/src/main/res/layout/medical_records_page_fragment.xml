@@ -28,95 +28,53 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/medical_records_recycler_view"
-            android:clickable="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_height="129dp"
-        android:layout_marginTop="44dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:background="#4CAF50"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/record_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Type"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.147"
+        <Spinner
+            android:id="@+id/type_spinner"
+            android:layout_width="137dp"
+            android:layout_height="match_parent"
+            android:background="#00BCD4"
+            android:entries="@array/type_of_record"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/doctor_name_medical_record_field"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Doctor"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.152"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/record_type"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/date_field_medical_records"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Date"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.147"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctor_name_medical_record_field"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Spinner
-            android:id="@+id/type_spinner"
-            android:layout_width="238dp"
-            android:layout_height="23dp"
-            android:background="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.226" />
-
         <Spinner
             android:id="@+id/doctor_spinner"
-            android:layout_width="238dp"
-            android:layout_height="23dp"
-            android:layout_marginTop="12dp"
-            android:background="#FAF9F9"
+            android:layout_width="137dp"
+            android:layout_height="match_parent"
+            android:entries="@array/doctor_names"
+            android:background="#03A9F4"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/type_spinner"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toEndOf="@+id/type_spinner"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
             android:id="@+id/date_spinner"
-            android:layout_width="238dp"
-            android:layout_height="23dp"
-            android:layout_marginBottom="15dp"
-            android:background="#FFFFFF"
+            android:layout_width="137dp"
+            android:layout_height="match_parent"
+            android:entries="@array/record_date"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctor_spinner"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toEndOf="@+id/doctor_spinner"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,7 @@
             android:id="@+id/Medical_History_Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Medical History"
             android:shadowColor="#4CAF50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

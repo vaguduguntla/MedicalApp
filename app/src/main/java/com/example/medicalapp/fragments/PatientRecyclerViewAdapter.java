@@ -18,16 +18,16 @@ import com.example.medicalapp.R;
 import java.util.ArrayList;
 
 public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecyclerViewAdapter.PatientViewHolder> {
-    ArrayList<Patients> PatientNamesList;
+    ArrayList<Users> PatientNamesList;
     Context context;
    // String PatientNamesList[];
 
-    public PatientRecyclerViewAdapter(Context ct, ArrayList<Patients> s1){
+    public PatientRecyclerViewAdapter(Context ct, ArrayList<Users> s1){
         context = ct;
         PatientNamesList = new ArrayList<>(s1);
     }
 
-    public void updateList(ArrayList<Patients> newArr) {
+    public void updateList(ArrayList<Users> newArr) {
         PatientNamesList = newArr;
         notifyDataSetChanged();
     }

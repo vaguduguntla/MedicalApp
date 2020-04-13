@@ -2,12 +2,12 @@ package com.example.medicalapp.fragments;
 
 import com.example.medicalapp.R;
 
-public class Patients {
+public class Users {
     String pid;
     String Name;
     int image = R.drawable.ic_account_circle_black_24dp;
 
-    public Patients(String pid, String Name){
+    public Users(String pid, String Name){
         this.pid = pid;
         this.Name = Name;
     }

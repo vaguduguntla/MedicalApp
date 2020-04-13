@@ -4,11 +4,13 @@ public class MedicalRecord {
     String RID;
     String Type;
     String Name;
+    String Date;
 
-    MedicalRecord(String RID, String Type, String Name ){
+    MedicalRecord(String RID, String Type, String Name, String Date){
         this.RID = RID;
         this.Type = Type;
         this.Name =  Name;
+        this.Date = Date;
     }
 
 
@@ -44,5 +46,5 @@ public class MedicalRecord {
         Date = date;
     }
 
-    String Date;
+
 }

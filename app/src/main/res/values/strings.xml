@@ -13,21 +13,8 @@
     <string name="add_new_doctor">Add New Doctor</string>
     <string name="medical_records">Medical Records</string>
     <string name="medications">Medications</string>
-    <string-array name="patient_names">
-        <item>Vaasu</item>
-        <item>Arjun</item>
-        <item>Zeb</item>
-        <item>Dana</item>
-        <item>Julia</item>
-        <item>Hanna</item>
-        <item>Kevin</item>
-        <item>Sam</item>
-        <item>Zeus</item>
-        <item>Aries</item>
-        <item>George</item>
-        <item>Poop</item>
-    </string-array>
     <string-array name="doctor_names">
+        <item>Doctor</item>
         <item>Dr. Lama</item>
         <item>Dr. Kleinsborg</item>
         <item>Dr. Guduguntla</item>
@@ -46,18 +33,58 @@
         <item>STD Test</item>
         <item>Allergy Test</item>
         <item>Physical Examination</item>
+        <item>Blah</item>
+        <item>Blah</item>
+        <item>Blah</item>
+        <item>Blah</item>
+        <item>Blah</item>
+        <item>Blah</item>
+        <item>Blah</item>
+        <item>Blah</item>
+        <item>Blah</item>
+        <item>Blah</item>
+        <item>Blah</item>
+
+
+
 
     </string-array>
     <string-array name="type_of_record">
+        <item>Record Type</item>
         <item>Report</item>
         <item>Lab</item>
         <item>Lab</item>
         <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+        <item>Doctors Notes</item>
+
     </string-array>
     <string-array name="record_date">
+        <item>Date</item>
         <item>10/12/2019</item>
         <item>6/10/2018</item>
         <item>5/11/2017</item>
         <item>7/13/2016</item>
+        <item>7/13/2016</item>
+        <item>7/13/2016</item>
+        <item>7/13/2016</item>
+        <item>7/13/2016</item>
+        <item>7/13/2016</item>
+        <item>7/13/2016</item>
+        <item>7/13/2016</item>
+        <item>7/13/2016</item>
+        <item>7/13/2016</item>
+        <item>7/13/2016</item>
+        <item>7/13/2016</item>
     </string-array>
+
 </resources>

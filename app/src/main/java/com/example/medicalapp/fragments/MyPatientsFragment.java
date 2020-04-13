@@ -38,7 +38,7 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
     // Required empty public constructor
   }
 
-  ArrayList<Patients> PatientNamesList = new ArrayList<Patients>();
+  ArrayList<Users> PatientNamesList = new ArrayList<Users>();
 
 
   RecyclerView patientRecyclerView;
@@ -89,7 +89,7 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
       JSONArray jsonArr = new JSONArray(data[0]);
 
       for (int i=0;i<jsonArr.length();++i) {
-        PatientNamesList.add(new Patients("1", jsonArr.getJSONObject(i).getString("name")));
+        PatientNamesList.add(new Users("1", jsonArr.getJSONObject(i).getString("name")));
       }
       Log.d("data",data[0]);
     } catch (InterruptedException | JSONException e) {
@@ -112,7 +112,7 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
 
     String userInput = newText.toLowerCase();
 
-    ArrayList<Patients> newList = new ArrayList<>();
+    ArrayList<Users> newList = new ArrayList<>();
 
     for (int i=0;i<PatientNamesList.size();++i) {
       if (PatientNamesList.get(i).Name.toLowerCase().contains(userInput)) {

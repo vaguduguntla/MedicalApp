@@ -26,6 +26,8 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
         // Required empty public constructor
     }
     RecyclerView recyclerView;
+    String n1[], n2[], n3[];
+
     ArrayList<MedicalRecord> MedicalRecordsList = new ArrayList<MedicalRecord>();
     /**
      * Use this factory method to create a new instance of
@@ -61,6 +63,13 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
         return inflater.inflate(R.layout.medical_records_page_fragment, container, false);
     }
     public void onViewCreated(View view, Bundle savedInstanceState){
+        n1 = getResources().getStringArray(R.array.doctor_names);
+        n2 = getResources().getStringArray(R.array.type_of_record);
+        n3 = getResources().getStringArray(R.array.record_date);
+        for(int i =0; i<n1.length; i++){
+            MedicalRecordsList.add(new MedicalRecord("1", n1[i],n2[i],n3[i]));
+        }
+
         recyclerView = view.findViewById(R.id.medical_records_recycler_view);
         MedicalRecordsRecyclerViewAdapter adapter = new MedicalRecordsRecyclerViewAdapter(getContext(),MedicalRecordsList);
         recyclerView.setAdapter(adapter);

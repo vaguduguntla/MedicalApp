@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
 
+import java.util.ArrayList;
+
 public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecyclerViewAdapter.DoctorViewHolder> {
+    ArrayList<Users> DoctorNamesList;
     int image;
     Context context;
-    String DoctorNamesList[];
 
-    public DoctorRecyclerViewAdapter(String s1[], Context ct, int img){
+    public DoctorRecyclerViewAdapter(ArrayList<Users> s1, Context ct, int img){
         image = img;
         context = ct;
         DoctorNamesList = s1;
@@ -34,14 +36,14 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
 
     @Override
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
-        holder.doctors_names.setText(DoctorNamesList[position]);
+        holder.doctors_names.setText(DoctorNamesList.get(position).Name);
         holder.imageView.setImageResource(image);
 
     }
 
     @Override
     public int getItemCount() {
-        return DoctorNamesList.length;
+        return DoctorNamesList.size();
     }
 
     public class DoctorViewHolder extends RecyclerView.ViewHolder {

@@ -10,6 +10,7 @@
         android:id="@+id/medical_record"
         android:layout_width="match_parent"
         android:layout_height="46dp"
+        android:clickable="true"
         android:background="#FFFFFF"
         app:cardCornerRadius="6dp"
         app:layout_constraintEnd_toEndOf="parent"
