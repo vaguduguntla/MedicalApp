@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecyclerViewAdapter.PatientViewHolder> {
     ArrayList<Users> PatientNamesList;
     Context context;
+    int image = R.drawable.ic_account_circle_black_24dp;
    // String PatientNamesList[];
 
     public PatientRecyclerViewAdapter(Context ct, ArrayList<Users> s1){
@@ -43,7 +44,7 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
     @Override
     public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
         holder.patient_names.setText(PatientNamesList.get(position).Name);
-        holder.imageView.setImageResource(PatientNamesList.get(position).image);
+        holder.imageView.setImageResource(image);
     }
 
     @Override
