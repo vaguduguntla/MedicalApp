@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  * Use the {@link MyNetworkFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyNetworkFragment extends Fragment {
+public class MyNetworkFragment extends Fragment implements SearchView.OnQueryTextListener {
   // TODO: Rename parameter arguments, choose names that match
   // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
   private static final String ARG_PARAM1 = "param1";
@@ -33,6 +34,7 @@ public class MyNetworkFragment extends Fragment {
     // Required empty public constructor
   }
   ArrayList<Users> DoctorNamesList = new ArrayList<>();
+  DoctorRecyclerViewAdapter doctorRecyclerViewAdapter;
   String TempList[];
   int img = R.drawable.ic_doctor;
   RecyclerView doctorReyclerView;
@@ -85,8 +87,19 @@ public class MyNetworkFragment extends Fragment {
     doctorReyclerView = view.findViewById(R.id.names_recycler_view);
     Button btn = (Button) view.findViewById(R.id.add_user_button);
     btn.setText(getResources().getString(R.string.add_new_doctor));
-    DoctorRecyclerViewAdapter doctorRecyclerViewAdapter = new DoctorRecyclerViewAdapter(DoctorNamesList, getContext(), img);
+    doctorRecyclerViewAdapter = new DoctorRecyclerViewAdapter(DoctorNamesList, getContext(), img);
     doctorReyclerView.setAdapter(doctorRecyclerViewAdapter);
     doctorReyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+  }
+
+  @Override
+  public boolean onQueryTextSubmit(String query) {
+    return false;
+  }
+
+  @Override
+  public boolean onQueryTextChange(String newText) {
+    doctorRecyclerViewAdapter.getFilter().filter(newText);
+    return false;
   }
 }

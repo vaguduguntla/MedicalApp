@@ -39,6 +39,7 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
   }
 
   ArrayList<Users> PatientNamesList = new ArrayList<Users>();
+  PatientRecyclerViewAdapter patientRecyclerViewAdapter;
 
 
   RecyclerView patientRecyclerView;
@@ -96,7 +97,7 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
       e.printStackTrace();
     }
 
-    PatientRecyclerViewAdapter patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList);
+    patientRecyclerViewAdapter = new PatientRecyclerViewAdapter(getContext(), PatientNamesList);
     patientRecyclerView.setAdapter(patientRecyclerViewAdapter);
     patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
   }
@@ -109,18 +110,7 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
 
   @Override
   public boolean onQueryTextChange(String newText) {
-
-    String userInput = newText.toLowerCase();
-
-    ArrayList<Users> newList = new ArrayList<>();
-
-    for (int i=0;i<PatientNamesList.size();++i) {
-      if (PatientNamesList.get(i).Name.toLowerCase().contains(userInput)) {
-        newList.add(PatientNamesList.get(i));
-      }
-    }
-    ((PatientRecyclerViewAdapter)patientRecyclerView.getAdapter()).updateList(newList);
-
+    patientRecyclerViewAdapter.getFilter().filter(newText);
     return true;
   }
 
