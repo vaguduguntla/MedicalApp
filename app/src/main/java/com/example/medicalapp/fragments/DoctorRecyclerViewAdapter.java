@@ -1,6 +1,7 @@
 package com.example.medicalapp.fragments;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.R;
 
 import java.util.ArrayList;
@@ -90,7 +93,24 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
             super(itemView);
             doctors_names = itemView.findViewById(R.id.names);
             imageView = itemView.findViewById(R.id.image_next_to_name);
+            final CardView cardView = (CardView)itemView.findViewById(R.id.Names);
+            if(cardView==null){
+                Log.d("Null","Null");
+            }
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v){
+                    Log.d("Click", "Works");
+                    String clickedID = DoctorNamesList.get(getAdapterPosition()).getPid();
+
+
+                    //Inflate New View
+                    MainActivity currentActivity = (MainActivity) v.getContext();
+                    currentActivity.openFragment(DoctorProfileFragment.newInstance(clickedID));
+                }
+            });
         }
+
     }
 
 
