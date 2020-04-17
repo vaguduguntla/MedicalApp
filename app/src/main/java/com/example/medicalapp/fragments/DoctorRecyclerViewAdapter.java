@@ -5,8 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,9 +17,8 @@ import com.example.medicalapp.R;
 
 import java.util.ArrayList;
 
-public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecyclerViewAdapter.DoctorViewHolder> implements Filterable {
+public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecyclerViewAdapter.DoctorViewHolder> {
     ArrayList<Users> DoctorNamesList;
-    ArrayList<Users> DoctorNamesListFull;
     int image;
     Context context;
 
@@ -29,7 +26,6 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
         image = img;
         context = ct;
         DoctorNamesList = s1;
-        DoctorNamesListFull = new ArrayList<>(DoctorNamesList);
     }
 
     @NonNull
@@ -52,39 +48,6 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
     public int getItemCount() {
         return DoctorNamesList.size();
     }
-
-    //filter logic for searchview
-    @Override
-    public Filter getFilter() {
-        return doctorNameFilter;
-    }
-    Filter doctorNameFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            ArrayList<Users> FilteredList = new ArrayList<>();
-            if(constraint == null || constraint.length() == 0){
-                FilteredList.addAll(DoctorNamesListFull);
-            }
-            else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-                for(Users user: DoctorNamesListFull){
-                    if(user.getName().toLowerCase().contains(filterPattern)){
-                        FilteredList.add(user);
-                    }
-                }
-            }
-            FilterResults results = new FilterResults();
-            results.values = FilteredList;
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            DoctorNamesList.clear();
-            DoctorNamesList.addAll((ArrayList) results.values);
-            notifyDataSetChanged();
-        }
-    };
 
     public class DoctorViewHolder extends RecyclerView.ViewHolder {
         TextView doctors_names;

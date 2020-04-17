@@ -33,23 +33,6 @@ class MainActivity : AppCompatActivity() {
             return super.onPrepareOptionsMenu(menu)
         }
 
-        if(currentFragment is MyNetworkFragment){
-            val inflater: MenuInflater = menuInflater
-            supportActionBar?.setDisplayShowTitleEnabled(false)
-            supportActionBar?.setDisplayShowHomeEnabled(false)
-            inflater.inflate(R.menu.search_menu, menu)
-            val searchItem: MenuItem = menu!!.findItem(R.id.search_bar)
-            val searchBar: SearchView = searchItem.actionView as SearchView
-            searchBar.isIconifiedByDefault = false
-            searchBar.queryHint = "Search for Doctor by Name"
-
-            val menuItem: MenuItem = menu.findItem(R.id.search_bar)
-            val searchView = menuItem.actionView as SearchView
-            searchView.setOnQueryTextListener(currentFragment)
-
-
-        }
-
         if (currentFragment is MyPatientsFragment) {
 
             val inflater: MenuInflater = menuInflater
