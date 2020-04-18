@@ -61,13 +61,23 @@ public class PatientProfileFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
         Button medicalRecordsButton = view.findViewById(R.id.Medical_Records_Button);
+        Button medicalHistoryButton = view.findViewById(R.id.Medical_History_Button);
         medicalRecordsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 Log.d("Click", pid);
                 //Inflate New View
                 MainActivity currentActivity = (MainActivity)getActivity();
-                currentActivity.openFragment(MedicalRecordsFragment.newInstance("",""));
+                currentActivity.openFragment(MedicalRecordsFragment.newInstance(""/*mid*/));
+            }
+        });
+        medicalHistoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Log.d("Click", pid);
+                //Inflate New View
+                MainActivity currentActivity = (MainActivity)getActivity();
+                currentActivity.openFragment(MedicalHistoryFragment.newInstance(""));
             }
         });
     }
