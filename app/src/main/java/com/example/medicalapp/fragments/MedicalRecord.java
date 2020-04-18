@@ -3,14 +3,16 @@ package com.example.medicalapp.fragments;
 public class MedicalRecord {
     String RID;
     String Type;
+    String Doctor;
     String Name;
     String Date;
 
-    MedicalRecord(String RID, String Type, String Name, String Date){
+    MedicalRecord(String RID, String Type, String Name, String Date, String Doctor){
         this.RID = RID;
         this.Type = Type;
         this.Name =  Name;
         this.Date = Date;
+        this.Doctor = Doctor;
     }
 
 
@@ -45,6 +47,10 @@ public class MedicalRecord {
     public void setDate(String date) {
         Date = date;
     }
+
+    public String getDoctor() { return Doctor; }
+
+    public void setDoctor(String doctor) { Doctor = doctor; }
 
 
 }

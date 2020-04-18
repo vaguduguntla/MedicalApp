@@ -26,7 +26,7 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
         // Required empty public constructor
     }
     RecyclerView recyclerView;
-    String n1[], n2[], n3[];
+    String n1[], n2[], n3[], n4[];
 
     ArrayList<MedicalRecord> MedicalRecordsList = new ArrayList<MedicalRecord>();
     /**
@@ -65,8 +65,10 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
         n1 = getResources().getStringArray(R.array.record_name);
         n2 = getResources().getStringArray(R.array.type_of_record);
         n3 = getResources().getStringArray(R.array.record_date);
+        n4 = getResources().getStringArray(R.array.doctor_names);
+
         for(int i =0; i<n1.length; i++){
-            MedicalRecordsList.add(new MedicalRecord("1", n2[i],n1[i],n3[i]));
+            MedicalRecordsList.add(new MedicalRecord("1", null,n1[i],n3[i], n4[i]));
         }
 
         recyclerView = view.findViewById(R.id.medical_records_recycler_view);

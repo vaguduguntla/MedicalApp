@@ -46,6 +46,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:background="#4CAF50"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,33 +54,33 @@
 
         <Spinner
             android:id="@+id/type_spinner"
-            android:layout_width="137dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="#00BCD4"
             android:entries="@array/type_of_record"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".5" />
 
         <Spinner
             android:id="@+id/doctor_spinner"
-            android:layout_width="137dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="#03A9F4"
             android:entries="@array/doctor_names"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/type_spinner"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Spinner
-            android:id="@+id/date_spinner"
-            android:layout_width="137dp"
-            android:layout_height="match_parent"
-            android:entries="@array/record_date"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/doctor_spinner"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/type_spinner"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

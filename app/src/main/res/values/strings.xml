@@ -1,11 +1,6 @@
 <resources>
     <string name="app_name">MedicalApp</string>
-    <string name="list_of_hours">Monday: 10 AM - 5 PM
-    \n\nTuesday: 9 AM - 5 PM
-    \n\nWednesday: OFF
-    \n\nThursday: 11 AM - 4 PM
-    \n\nFriday: 12 PM - 3 PM
-    </string>
+
     <string name="speciality">Pediatric Surgeon</string>
     <string name="phone_number_editable">0123456789</string>
     <string name="location_editable">1234 Main St. Ann Arbor, MI</string>
@@ -40,34 +35,15 @@
         <item>Blah</item>
         <item>Blah</item>
         <item>Blah</item>
-        <item>Blah</item>
-        <item>Blah</item>
-        <item>Blah</item>
-        <item>Blah</item>
-
-
-
-
     </string-array>
+
     <string-array name="type_of_record">
         <item>Record Type</item>
         <item>Report</item>
         <item>Lab</item>
-        <item>Lab</item>
         <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-        <item>Doctors Notes</item>
-
     </string-array>
+
     <string-array name="record_date">
         <item>Date</item>
         <item>10/12/2019</item>

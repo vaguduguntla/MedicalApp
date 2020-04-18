@@ -32,7 +32,7 @@ public class MedicalRecordsRecyclerViewAdapter extends RecyclerView.Adapter<Medi
     @Override
     public void onBindViewHolder(@NonNull MedicalRecordsViewHolder holder, int position) {
         holder.NameText.setText(MedicalRecordsList.get(position).Name);
-        holder.TypeText.setText(MedicalRecordsList.get(position).Type);
+        holder.DoctorText.setText(MedicalRecordsList.get(position).Doctor);
         holder.DateText.setText(MedicalRecordsList.get(position).Date);
 
     }
@@ -43,11 +43,11 @@ public class MedicalRecordsRecyclerViewAdapter extends RecyclerView.Adapter<Medi
     }
 
     public class MedicalRecordsViewHolder extends RecyclerView.ViewHolder {
-        TextView NameText, TypeText, DateText;
+        TextView NameText, DoctorText, DateText;
         public MedicalRecordsViewHolder(@NonNull View itemView) {
             super(itemView);
             NameText = itemView.findViewById(R.id.Record_Name);
-            TypeText = itemView.findViewById(R.id.Type);
+            DoctorText = itemView.findViewById(R.id.Doctor);
             DateText = itemView.findViewById(R.id.Date);
         }
     }
