@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,8 +19,9 @@ import com.example.medicalapp.R;
 
 import java.util.ArrayList;
 
-public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecyclerViewAdapter.DoctorViewHolder> {
+public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecyclerViewAdapter.DoctorViewHolder> implements Filterable {
     ArrayList<Users> DoctorNamesList;
+    ArrayList<Users> DoctorNamesListFull;
     int image;
     Context context;
 
@@ -26,6 +29,7 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
         image = img;
         context = ct;
         DoctorNamesList = s1;
+        DoctorNamesListFull = new ArrayList<>(DoctorNamesList);
     }
 
     @NonNull
@@ -49,6 +53,40 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
         return DoctorNamesList.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return doctorNameFilter;
+    }
+    Filter doctorNameFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<Users> filteredList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0){
+                filteredList.addAll(DoctorNamesListFull);
+            }
+            else{
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(Users user: DoctorNamesListFull){
+                    if(user.getName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(user);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            DoctorNamesList.clear();
+            DoctorNamesList.addAll((ArrayList)results.values);
+            notifyDataSetChanged();
+
+        }
+    };
+
     public class DoctorViewHolder extends RecyclerView.ViewHolder {
         TextView doctors_names;
         ImageView imageView;
@@ -64,7 +102,7 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
                 @Override
                 public void onClick(View v){
                     Log.d("Click", "Works");
-                    String clickedID = DoctorNamesList.get(getAdapterPosition()).getPid();
+                    String clickedID = DoctorNamesList.get(getAdapterPosition()).getUid();
 
 
                     //Inflate New View
@@ -75,7 +113,5 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
         }
 
     }
-
-
 
 }
