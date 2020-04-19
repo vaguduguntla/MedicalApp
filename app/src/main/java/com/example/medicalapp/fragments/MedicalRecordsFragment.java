@@ -1,26 +1,36 @@
 package com.example.medicalapp.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
-public class MedicalRecordsFragment extends PatientProfileFragment {
+import android.util.Log;
+
+public class MedicalRecordsFragment extends PatientProfileFragment implements AdapterView.OnItemSelectedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "mid";
 
-
     // TODO: Rename and change types of parameters
     private String mid;
 
+    private HashMap<String,ArrayList<MedicalRecord>> doctor_names_to_records = new HashMap<>();
+    private HashMap<String,ArrayList<MedicalRecord>> type_to_record = new HashMap<>();
 
     public MedicalRecordsFragment() {
         // Required empty public constructor
@@ -51,7 +61,6 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mid = getArguments().getString(ARG_PARAM1);
-
         }
     }
 
@@ -61,19 +70,54 @@ public class MedicalRecordsFragment extends PatientProfileFragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.medical_records_page_fragment, container, false);
     }
+
     public void onViewCreated(View view, Bundle savedInstanceState){
         n1 = getResources().getStringArray(R.array.record_name);
         n2 = getResources().getStringArray(R.array.type_of_record);
         n3 = getResources().getStringArray(R.array.record_date);
         n4 = getResources().getStringArray(R.array.doctor_names);
 
+        ArrayList<String> doctor_names = new ArrayList<String>();
+
+        type_to_record.put("Report",new ArrayList<MedicalRecord>());
+        type_to_record.put("Lab",new ArrayList<MedicalRecord>());
+        type_to_record.put("Doctors Notes",new ArrayList<MedicalRecord>());
+
         for(int i =0; i<n1.length; i++){
-            MedicalRecordsList.add(new MedicalRecord("1", null,n1[i],n3[i], n4[i]));
+            MedicalRecord newRecord = new MedicalRecord("1", null,n1[i],n3[i], n4[i]);
+            MedicalRecordsList.add(newRecord);
+            doctor_names.add(n4[i]);
+            type_to_record.get(n2[i]).add(newRecord);
+            if (doctor_names_to_records.containsKey(n4[i])) {
+                doctor_names_to_records.get(n4[i]).add(newRecord);
+            }
+            else {
+                doctor_names_to_records.put(n4[i],new ArrayList<MedicalRecord>(Arrays.asList(newRecord)));
+            }
         }
 
         recyclerView = view.findViewById(R.id.medical_records_recycler_view);
         MedicalRecordsRecyclerViewAdapter adapter = new MedicalRecordsRecyclerViewAdapter(getContext(),MedicalRecordsList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        Spinner doctor_name_spinner = (Spinner) view.findViewById(R.id.doctor_spinner);
+
+        ArrayAdapter<String> spinnerArrayAdaptor = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, doctor_names);
+
+        spinnerArrayAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        doctor_name_spinner.setAdapter(spinnerArrayAdaptor);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String item = parent.getItemAtPosition(position).toString();
+        Log.d("Item_selected:",item);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

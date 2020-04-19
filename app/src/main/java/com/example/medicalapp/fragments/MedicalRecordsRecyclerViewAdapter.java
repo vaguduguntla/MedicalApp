@@ -34,7 +34,6 @@ public class MedicalRecordsRecyclerViewAdapter extends RecyclerView.Adapter<Medi
         holder.NameText.setText(MedicalRecordsList.get(position).Name);
         holder.DoctorText.setText(MedicalRecordsList.get(position).Doctor);
         holder.DateText.setText(MedicalRecordsList.get(position).Date);
-
     }
 
     @Override
