@@ -6,8 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +26,10 @@ public class MedicalHistoryFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String hid;
+
+    RecyclerView recyclerView;
+    ArrayList<MedicalHistory> MedicalHistoryList;
+
 
 
     public MedicalHistoryFragment() {
@@ -51,14 +59,25 @@ public class MedicalHistoryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             hid = getArguments().getString(ARG_PARAM1);
-
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_medical_history, container, false);
+        return inflater.inflate(R.layout.fragment_medical_history_medications, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        recyclerView = view.findViewById(R.id.medical_history_medications_recyclerView);
+        MedicalHistoryRecyclerViewAdapter adapter = new MedicalHistoryRecyclerViewAdapter(getContext(), MedicalHistoryList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+
     }
 }
