@@ -2,6 +2,7 @@ package com.example.medicalapp.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeMap;
 
 /**
@@ -85,16 +87,16 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
     super.onViewCreated(view,savedInstanceState);
     patientRecyclerView = view.findViewById(R.id.names_recycler_view);
     okhttp ok = new okhttp();
-    TreeMap<String, String> post = new TreeMap<>();
-    post.put("method", "insert");
-    post.put("table", "users");
-    post.put("type", "Doctor");
-    post.put("name", "Dr Klein");
-    post.put("email", "klein@gmail.com");
-    post.put("password", "password");
-    // ok.appendUrl("name_users");
+    //List<Pair<String, String>> post = new ArrayList<>();
+    //post.add(new Pair("method", "insert"));
+    //post.add(new Pair("table", "users"));
+    //post.add(new Pair("type", "Doctor"));
+    //post.add(new Pair("name", "Dr Klein"));
+    //post.add(new Pair("email", "klein@gmail.com"));
+    //post.add(new Pair("password", "password"));
+    ok.appendUrl("name_users");
     try {
-      String[] data = ok.run_request_and_handle_response();
+      String[] data = ok.run_request_and_handle_response(null);
       JSONArray jsonArr = new JSONArray(data[0]);
 
       for (int i=0;i<jsonArr.length();++i) {

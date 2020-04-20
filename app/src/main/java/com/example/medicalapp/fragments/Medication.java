@@ -7,6 +7,8 @@ public class Medication {
     String startDate;
     String endDate;
 
+    public Medication(String mid, String pid, String name, String startDate, String endDate) {}
+
     public String getMid() {
         return mid;
     }

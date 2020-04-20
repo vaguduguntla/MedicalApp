@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
+import com.example.medicalapp.okhttp;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -25,7 +29,7 @@ public class MedicationsFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String mid;
-    ArrayList<Medication> MedicationList;
+    ArrayList<Medication> MedicationList = new ArrayList<>();
     RecyclerView recyclerView;
 
     public MedicationsFragment() {
@@ -65,6 +69,21 @@ public class MedicationsFragment extends Fragment {
 
     public void onViewCreated(View view, Bundle savedInstanceState){
         recyclerView = view.findViewById(R.id.medical_history_medications_recyclerView);
+        okhttp ok = new okhttp();
+        ok.appendUrl("all_meds");
+        try {
+            String[] data = ok.run_request_and_handle_response(null);
+            JSONArray jsonArr = new JSONArray(data[0]);
+            for (int i=0;i<jsonArr.length();++i) {
+                MedicationList.add(new Medication(jsonArr.getJSONObject(i).getString("mid"),
+                        jsonArr.getJSONObject(i).getString("pid"),
+                        jsonArr.getJSONObject(i).getString("Name"),
+                        jsonArr.getJSONObject(i).getString("startDate"),
+                        jsonArr.getJSONObject(i).getString("endDate")));
+            }
+        } catch (InterruptedException | JSONException e) {
+            e.printStackTrace();
+        }
         MedicationsRecyclerViewAdapter adapter = new MedicationsRecyclerViewAdapter(getContext(), MedicationList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

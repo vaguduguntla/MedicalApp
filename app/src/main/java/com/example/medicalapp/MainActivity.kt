@@ -11,9 +11,7 @@ import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.example.medicalapp.fragments.MyNetworkFragment
-import com.example.medicalapp.fragments.MyPatientsFragment
-import com.example.medicalapp.fragments.MedicationsFragment
+import com.example.medicalapp.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
-        openFragment(MedicationsFragment.newInstance("", ""))
+        openFragment(MyProfileFragment.newInstance("",""))
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -65,9 +63,6 @@ class MainActivity : AppCompatActivity() {
             searchView.setOnQueryTextListener(currentFragment)
         }
 
-
-
-
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -89,17 +84,17 @@ class MainActivity : AppCompatActivity() {
                 Log.d("GOT HERE", "HI")
                 when (item.getItemId()) {
                     R.id.fragment_my_profile -> {
-                        openFragment(MedicationsFragment.newInstance("", ""))
+                        openFragment(MedicationsFragment.newInstance(""))
 
                         return true
                     }
                     R.id.fragment_my_patients -> {
-                        openFragment(MyPatientsFragment.newInstance("", ""))
+                        openFragment(MyPatientsFragment.newInstance("",""))
 
                         return true
                     }
                     R.id.fragment_my_network -> {
-                        openFragment(MyNetworkFragment.newInstance("", ""))
+                        openFragment(MyNetworkFragment.newInstance("",""))
 
                         return true
                     }

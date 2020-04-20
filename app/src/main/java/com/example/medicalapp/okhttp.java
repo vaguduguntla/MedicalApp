@@ -2,17 +2,20 @@ package com.example.medicalapp;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import android.util.Log;
+import android.util.Pair;
 
 public class okhttp {
     //OkHttpClient client = new OkHttpClient();
@@ -30,7 +33,7 @@ public class okhttp {
         this.url += parameters;
     }
 
-    public String[] run_request_and_handle_response(TreeMap<String, String> post_body) throws InterruptedException {
+    public String[] run_request_and_handle_response(List<Pair<String, String>> post_body) throws InterruptedException {
 
         final String[] myResponse = new String[1];
 
@@ -41,14 +44,11 @@ public class okhttp {
                 .build();
         } else {
             FormBody.Builder formBody = new FormBody.Builder();
-            for(TreeMap.Entry<String,String> entry : post_body.entrySet()) {
-                formBody.add(entry.getKey(), entry.getValue());
+            for(Pair<String, String> p : post_body) {
+                formBody.add(p.first, p.second);
             }
+
             RequestBody finished_body = formBody.build();
-            //RequestBody finished_body = new FormBody.Builder()
-            //        .add("username", "test")
-            //        .add("password", "test")
-            //        .build();
 
             request = new Request.Builder()
                     .url(url)
