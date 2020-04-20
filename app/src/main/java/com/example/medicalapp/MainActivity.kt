@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.medicalapp.fragments.MyNetworkFragment
 import com.example.medicalapp.fragments.MyPatientsFragment
-import com.example.medicalapp.fragments.MyProfileFragment
+import com.example.medicalapp.fragments.MedicationsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
-        openFragment(MyProfileFragment.newInstance("", ""))
+        openFragment(MedicationsFragment.newInstance("", ""))
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("GOT HERE", "HI")
                 when (item.getItemId()) {
                     R.id.fragment_my_profile -> {
-                        openFragment(MyProfileFragment.newInstance("", ""))
+                        openFragment(MedicationsFragment.newInstance("", ""))
 
                         return true
                     }

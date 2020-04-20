@@ -1,7 +1,7 @@
 package com.example.medicalapp.fragments;
 
-import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,15 +18,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import android.util.Log;
-
 public class MedicalRecordsFragment extends PatientProfileFragment implements AdapterView.OnItemSelectedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "mid";
+    private static final String ARG_PARAM1 = "rid";
 
     // TODO: Rename and change types of parameters
-    private String mid;
+    private String rid;
 
     private HashMap<String,ArrayList<MedicalRecord>> doctor_names_to_records = new HashMap<>();
     private HashMap<String,ArrayList<MedicalRecord>> type_to_record = new HashMap<>();
@@ -43,14 +40,14 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param mid Parameter 1.
+     * @param rid Parameter 1.
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MedicalRecordsFragment newInstance(String mid) {
+    public static MedicalRecordsFragment newInstance(String rid) {
         MedicalRecordsFragment fragment = new MedicalRecordsFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, mid);
+        args.putString(ARG_PARAM1, rid);
 
         fragment.setArguments(args);
         return fragment;
@@ -60,7 +57,7 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mid = getArguments().getString(ARG_PARAM1);
+            rid = getArguments().getString(ARG_PARAM1);
         }
     }
 

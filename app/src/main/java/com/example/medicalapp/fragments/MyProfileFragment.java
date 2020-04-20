@@ -11,7 +11,7 @@ import com.example.medicalapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MyProfileFragment#newInstance} factory method to
+ * Use the {@link MedicationsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class MyProfileFragment extends Fragment {
@@ -37,8 +37,8 @@ public class MyProfileFragment extends Fragment {
    * @return A new instance of fragment HomeFragment.
    */
   // TODO: Rename and change types and number of parameters
-  public static MyProfileFragment newInstance(String param1, String param2) {
-    MyProfileFragment fragment = new MyProfileFragment();
+  public static MedicationsFragment newInstance(String param1, String param2) {
+    MedicationsFragment fragment = new MedicationsFragment();
     Bundle args = new Bundle();
     args.putString(ARG_PARAM1, param1);
     args.putString(ARG_PARAM2, param2);

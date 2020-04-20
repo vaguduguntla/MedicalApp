@@ -50,7 +50,7 @@ public class MedicalHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Medi
 
         public MedicalHistoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            issue = itemView.findViewById(R.id.Issue_textView);
+            issue = itemView.findViewById(R.id.name_of_medication_or_issue_textView);
             startDate = itemView.findViewById(R.id.start_date_textView);
             endDate = itemView.findViewById(R.id.end_date_textView);
 
