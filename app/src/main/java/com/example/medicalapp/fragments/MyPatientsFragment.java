@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,7 +85,14 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
     super.onViewCreated(view,savedInstanceState);
     patientRecyclerView = view.findViewById(R.id.names_recycler_view);
     okhttp ok = new okhttp();
-    ok.appendUrl("name_users");
+    TreeMap<String, String> post = new TreeMap<>();
+    post.put("method", "insert");
+    post.put("table", "users");
+    post.put("type", "Doctor");
+    post.put("name", "Dr Klein");
+    post.put("email", "klein@gmail.com");
+    post.put("password", "password");
+    // ok.appendUrl("name_users");
     try {
       String[] data = ok.run_request_and_handle_response();
       JSONArray jsonArr = new JSONArray(data[0]);
