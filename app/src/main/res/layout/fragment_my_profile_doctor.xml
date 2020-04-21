@@ -139,25 +139,26 @@
                             android:id="@+id/Monday_Start_Hour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="116dp"
-                            android:text="TextView"
+                            android:layout_marginStart="180dp"
+                            android:textAlignment="textEnd"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.55" />
+                            app:layout_constraintVertical_bias="0.55"
+                            tools:text="10 AM" />
 
                         <TextView
                             android:id="@+id/Monday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="32dp"
                             android:layout_marginEnd="16dp"
                             android:text="Monday:"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/Monday_Start_Hour"
-                            app:layout_constraintHorizontal_bias="0.19"
+                            app:layout_constraintHorizontal_bias="0.047"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.55" />
@@ -167,7 +168,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
-                            android:text="TextView"
+                            tools:text="10 PM"
+                            android:textAlignment="viewStart"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -195,24 +197,24 @@
                             android:id="@+id/Tuesday_Start_Hour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="116dp"
-                            android:text="TextView"
+                            android:layout_marginStart="180dp"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="10 AM" />
 
                         <TextView
                             android:id="@+id/Tuesday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginEnd="32dp"
                             android:text="Tuesday:"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/Tuesday_Start_Hour"
-                            app:layout_constraintHorizontal_bias="0.235"
+                            app:layout_constraintHorizontal_bias="0.061"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -235,7 +237,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
-                            android:text="TextView"
+                            tools:text="10 AM"
+                            android:textAlignment="viewStart"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -262,12 +265,13 @@
                             android:id="@+id/Wendesday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginEnd="32dp"
                             android:text="Wednesday:"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/Wednesday_Start_Hour"
-                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintHorizontal_bias="0.1"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -275,12 +279,13 @@
                             android:id="@+id/Wednesday_Start_Hour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="116dp"
-                            android:text="TextView"
+                            android:layout_marginStart="180dp"
+                            android:textAlignment="textEnd"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="10 AM" />
 
                         <TextView
                             android:id="@+id/dash3"
@@ -301,7 +306,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
-                            android:text="TextView"
+                            tools:text="10 AM"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -329,10 +334,13 @@
                             android:id="@+id/Thursday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginEnd="32dp"
                             android:text="Thursday:"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/Thursday_Start_Hour"
+                            app:layout_constraintHorizontal_bias="0.067"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -340,12 +348,13 @@
                             android:id="@+id/Thursday_Start_Hour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="116dp"
-                            android:text="TextView"
+                            android:layout_marginStart="180dp"
+                            android:textAlignment="textEnd"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="10 AM" />
 
                         <TextView
                             android:id="@+id/dash4"
@@ -366,7 +375,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
-                            android:text="TextView"
+                            tools:text="10 PM"
+                            android:textAlignment="viewStart"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -393,10 +403,13 @@
                             android:id="@+id/Friday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginEnd="32dp"
                             android:text="Friday:"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/Friday_Start_Hour"
+                            app:layout_constraintHorizontal_bias="0.047"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -404,12 +417,12 @@
                             android:id="@+id/Friday_Start_Hour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="116dp"
-                            android:text="TextView"
+                            android:layout_marginStart="180dp"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="10 AM" />
 
                         <TextView
                             android:id="@+id/dash5"
@@ -430,7 +443,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
-                            android:text="TextView"
+                            tools:text="10 PM"
+                            android:textAlignment="viewStart"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"

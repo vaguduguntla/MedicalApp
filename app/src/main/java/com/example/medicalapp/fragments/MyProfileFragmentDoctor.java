@@ -21,7 +21,7 @@ import org.json.JSONException;
  * Use the {@link MedicationsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyProfileFragment extends Fragment {
+public class MyProfileFragmentDoctor extends Fragment {
   // TODO: Rename parameter arguments, choose names that match
   // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
   private static final String ARG_PARAM1 = "param1";
@@ -31,7 +31,7 @@ public class MyProfileFragment extends Fragment {
   private String mParam1;
   private String mParam2;
 
-  public MyProfileFragment() {
+  public MyProfileFragmentDoctor() {
     // Required empty public constructor
   }
 
@@ -44,8 +44,8 @@ public class MyProfileFragment extends Fragment {
    * @return A new instance of fragment HomeFragment.
    */
   // TODO: Rename and change types and number of parameters
-  public static MyProfileFragment newInstance(String param1, String param2) {
-    MyProfileFragment fragment = new MyProfileFragment();
+  public static MyProfileFragmentDoctor newInstance(String param1, String param2) {
+    MyProfileFragmentDoctor fragment = new MyProfileFragmentDoctor();
     Bundle args = new Bundle();
     args.putString(ARG_PARAM1, param1);
     args.putString(ARG_PARAM2, param2);
@@ -131,6 +131,7 @@ public class MyProfileFragment extends Fragment {
   String CheckHour(String hour){
     boolean is_Am = true;
     int number = Integer.parseInt(String.valueOf(hour));
+    
     if(number > 12){
       number = number - 12;
       is_Am = false;

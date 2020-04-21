@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
-        openFragment(MyProfileFragment.newInstance("",""))
+        openFragment(MyProfileFragmentDoctor.newInstance("",""))
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("GOT HERE", "HI")
                 when (item.getItemId()) {
                     R.id.fragment_my_profile -> {
-                        openFragment(MyProfileFragment.newInstance(did,""))
+                        openFragment(MyProfileFragmentDoctor.newInstance(did,""))
 
                         return true
                     }
