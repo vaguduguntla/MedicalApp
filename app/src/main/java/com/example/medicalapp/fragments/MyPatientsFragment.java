@@ -92,7 +92,7 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
 
       for (int i=0;i<jsonArr.length();++i) {
                 PatientNamesList.add(new Patient(jsonArr.getJSONObject(i).getString("pid"),
-                /*jsonArr.getJSONObject(i).getString("name")*/ "Person" + Integer.toString(i),
+                jsonArr.getJSONObject(i).getString("name"), // "Person" + Integer.toString(i),
                 jsonArr.getJSONObject(i).getString("age"),
                 jsonArr.getJSONObject(i).getString("gender")));
       }

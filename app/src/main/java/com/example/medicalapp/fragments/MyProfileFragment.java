@@ -98,11 +98,11 @@ public class MyProfileFragment extends Fragment {
     String hours[] = null;
 
     okhttp ok = new okhttp();
-    ok.appendUrl("all_doctors_did=5");
+    ok.appendUrl("all_doctors_did=1");
     try{
       String data[] = ok.run_request_and_handle_response(null);
       JSONArray jsonArray = new JSONArray(data[0]);
-      //titleName.setText(jsonArray.getJSONObject(i).getString("name"));
+      titleName.setText(jsonArray.getJSONObject(0).getString("name"));
       Specialty.setText(jsonArray.getJSONObject(0).getString("specialty"));
       phoneNumber.setText(jsonArray.getJSONObject(0).getString("phone"));
       Location.setText(jsonArray.getJSONObject(0).getString("location"));
