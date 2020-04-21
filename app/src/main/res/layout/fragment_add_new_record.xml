@@ -33,7 +33,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="305dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
@@ -43,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/add_new_record_cardView">
 
         <LinearLayout
+            android:id="@+id/doctor_name_layout"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginTop="4dp"
@@ -58,5 +59,53 @@
                 android:completionHint="Select Doctor Name"
                 android:hint="Enter Doctor Name" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="4dp"
+            android:background="#8BC34A"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/doctor_name_layout">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:completionHint="Select Record Type"
+                android:hint="Enter Record Type"></AutoCompleteTextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="#8BC34A"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <EditText
+                android:id="@+id/add_record_date_edit_text"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date" />
+            <ImageButton
+                android:id="@+id/mtrl_calendar_main_pane"
+                android:layout_width="44dp"
+                android:layout_height="64dp"
+                android:layout_gravity="right">
+
+            </ImageButton>
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -73,7 +73,7 @@ public class MyProfileFragment extends Fragment {
     return inflater.inflate(R.layout.fragment_my_profile_doctor, container, false);
   }
 
-  @Override
+
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view,savedInstanceState);
     ImageView button = view.findViewById(R.id.edit_button);
@@ -98,11 +98,11 @@ public class MyProfileFragment extends Fragment {
     String hours[] = null;
 
     okhttp ok = new okhttp();
-    ok.appendUrl("all_doctors_did=5");
+    ok.appendUrl("all_doctors_did=1");
     try{
       String data[] = ok.run_request_and_handle_response(null);
       JSONArray jsonArray = new JSONArray(data[0]);
-      //titleName.setText(jsonArray.getJSONObject(i).getString("name"));
+      titleName.setText(jsonArray.getJSONObject(0).getString("name"));
       Specialty.setText(jsonArray.getJSONObject(0).getString("specialty"));
       phoneNumber.setText(jsonArray.getJSONObject(0).getString("phone"));
       Location.setText(jsonArray.getJSONObject(0).getString("location"));
@@ -129,11 +129,19 @@ public class MyProfileFragment extends Fragment {
   }
 
   String CheckHour(String hour){
+    boolean is_Am = true;
     int number = Integer.parseInt(String.valueOf(hour));
     if(number > 12){
       number = number - 12;
+      is_Am = false;
     }
     String result = Integer.toString(number);
+    if(is_Am){
+      result.concat(" AM");
+    }
+    else{
+      result.concat(" PM");
+    }
     return result;
   }
 

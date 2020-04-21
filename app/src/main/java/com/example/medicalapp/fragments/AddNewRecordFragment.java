@@ -73,5 +73,6 @@ public class AddNewRecordFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         AutoCompleteTextView doctorNameEditText = view.findViewById(R.id.add_record_doc_name_inputField);
         AutoCompleteDrNameAdapter adapter = new AutoCompleteDrNameAdapter(getContext(), allDoctorsList);
+        doctorNameEditText.setAdapter(adapter);
     }
 }
