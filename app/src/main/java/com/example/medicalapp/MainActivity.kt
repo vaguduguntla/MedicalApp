@@ -15,6 +15,8 @@ import com.example.medicalapp.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+
+    var did = "5"
     lateinit var bottomNavigation: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("GOT HERE", "HI")
                 when (item.getItemId()) {
                     R.id.fragment_my_profile -> {
-                        openFragment(MyProfileFragment.newInstance("",""))
+                        openFragment(MyProfileFragment.newInstance(did,""))
 
                         return true
                     }
