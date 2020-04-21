@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding = "4dp">
+    <ImageView android:id="@+id/autofill_doctor_image"
+        android:layout_width = "60dp"
+        android:layout_height = "40dp"
+        android:src="@drawable/ic_doctor_stethoscope_svgrepo_com"></ImageView>
+    <TextView
+        android:id="@+id/doctor_name_autofill_textview"
+        android:layout_width = "wrap_content"
+        android:layout_height="wrap_content"
+        tools:text = "Something"
+        android:textAppearance="?android:attr/textAppearanceListItem"
+        android:paddingStart="8dp"
+        android:layout_gravity="center_horizontal">
+
+    </TextView>
+
+
+</androidx.constraintlayout.widget.LinearLayout>
