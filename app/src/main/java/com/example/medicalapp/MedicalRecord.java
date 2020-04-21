@@ -1,4 +1,4 @@
-package com.example.medicalapp.fragments;
+package com.example.medicalapp;
 
 public class MedicalRecord {
     String RID;
@@ -7,7 +7,7 @@ public class MedicalRecord {
     String Name;
     String Date;
 
-    MedicalRecord(String RID, String Type, String Name, String Date, String Doctor){
+    public MedicalRecord(String RID, String Type, String Name, String Date, String Doctor){
         this.RID = RID;
         this.Type = Type;
         this.Name =  Name;

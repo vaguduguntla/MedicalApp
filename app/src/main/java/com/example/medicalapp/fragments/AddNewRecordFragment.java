@@ -9,6 +9,7 @@ import android.widget.AutoCompleteTextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.medicalapp.R;
+import com.example.medicalapp.Users;
 
 import java.util.ArrayList;
 

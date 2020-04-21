@@ -2,7 +2,6 @@ package com.example.medicalapp.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +11,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
+import com.example.medicalapp.Users;
 import com.example.medicalapp.okhttp;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,7 +40,7 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
     // Required empty public constructor
   }
 
-  ArrayList<Users> PatientNamesList = new ArrayList<Users>();
+  ArrayList<Patient> PatientNamesList = new ArrayList<>();
 
   RecyclerView patientRecyclerView;
 
@@ -87,13 +86,16 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
     super.onViewCreated(view,savedInstanceState);
     patientRecyclerView = view.findViewById(R.id.names_recycler_view);
     okhttp ok = new okhttp();
-    ok.appendUrl("name_users");
+    ok.appendUrl("all_patients");
     try {
       String[] data = ok.run_request_and_handle_response(null);
       JSONArray jsonArr = new JSONArray(data[0]);
 
       for (int i=0;i<jsonArr.length();++i) {
-        PatientNamesList.add(new Users("1", jsonArr.getJSONObject(i).getString("name")));
+                PatientNamesList.add(new Patient(jsonArr.getJSONObject(i).getString("pid"),
+                /*jsonArr.getJSONObject(i).getString("name")*/ "Person" + Integer.toString(i),
+                jsonArr.getJSONObject(i).getString("age"),
+                jsonArr.getJSONObject(i).getString("gender")));
       }
       Log.d("data",data[0]);
     } catch (InterruptedException | JSONException e) {

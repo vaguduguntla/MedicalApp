@@ -15,23 +15,24 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.MainActivity;
+import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
+import com.example.medicalapp.Users;
 
 import java.util.ArrayList;
 
 public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecyclerViewAdapter.PatientViewHolder> implements Filterable {
-    ArrayList<Users> PatientNamesList;
+    ArrayList<Patient> PatientNamesList;
     Context context;
     int image = R.drawable.ic_account_circle_black_24dp;
-    ArrayList<Users> PatientNamesListFull;
+    ArrayList<Patient> PatientNamesListFull;
    // String PatientNamesList[];
 
-    public PatientRecyclerViewAdapter(Context ct, ArrayList<Users> s1){
+    public PatientRecyclerViewAdapter(Context ct, ArrayList<Patient> s1){
         context = ct;
         PatientNamesList = new ArrayList<>(s1);
         PatientNamesListFull = new ArrayList<>(PatientNamesList);
     }
-
 
     @NonNull
     @Override
@@ -43,7 +44,7 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
 
     @Override
     public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
-        holder.patient_names.setText(PatientNamesList.get(position).Name);
+        holder.patient_names.setText(PatientNamesList.get(position).getName());
         holder.imageView.setImageResource(image);
     }
 
@@ -59,16 +60,16 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
     Filter patientNameFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            ArrayList<Users> filteredList = new ArrayList<>();
+            ArrayList<Patient> filteredList = new ArrayList<>();
             if(constraint == null || constraint.length() == 0){
                 filteredList.addAll(PatientNamesListFull);
             }
             else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for(Users user: PatientNamesListFull){
-                    if(user.getName().toLowerCase().startsWith(filterPattern)){
-                        filteredList.add(user);
+                for(Patient patient: PatientNamesListFull){
+                    if(patient.getName().toLowerCase().startsWith(filterPattern)){
+                        filteredList.add(patient);
                     }
                 }
             }
@@ -101,10 +102,10 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
                 @Override
                 public void onClick(View v){
                     Log.d("Click", "Works");
-                    String clickedID = PatientNamesList.get(getAdapterPosition()).getUid();
+                    Patient clickedPatient = PatientNamesList.get(getAdapterPosition());
                     //Inflate New View
                     MainActivity currentActivity = (MainActivity) v.getContext();
-                    currentActivity.openFragment(PatientProfileFragment.newInstance(clickedID));
+                    currentActivity.openFragment(PatientProfileFragment.newInstance(clickedPatient));
                 }
             });
         }

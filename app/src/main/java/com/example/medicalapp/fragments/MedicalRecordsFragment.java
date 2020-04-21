@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.MedicalRecord;
 import com.example.medicalapp.R;
 import com.example.medicalapp.okhttp;
 
