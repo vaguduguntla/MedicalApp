@@ -70,14 +70,14 @@ public class MedicationsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         recyclerView = view.findViewById(R.id.medical_history_medications_recyclerView);
         okhttp ok = new okhttp();
-        ok.appendUrl("all_meds");
+        ok.appendUrl("all_meds_pid="+mid);
         try {
             String[] data = ok.run_request_and_handle_response(null);
             JSONArray jsonArr = new JSONArray(data[0]);
             for (int i=0;i<jsonArr.length();++i) {
                 MedicationList.add(new Medication(jsonArr.getJSONObject(i).getString("mid"),
                         jsonArr.getJSONObject(i).getString("pid"),
-                        jsonArr.getJSONObject(i).getString("Name"),
+                        jsonArr.getJSONObject(i).getString("name"),
                         jsonArr.getJSONObject(i).getString("startDate"),
                         jsonArr.getJSONObject(i).getString("endDate")));
             }

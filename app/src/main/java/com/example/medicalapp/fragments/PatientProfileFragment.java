@@ -62,6 +62,7 @@ public class PatientProfileFragment extends Fragment {
         super.onViewCreated(view,savedInstanceState);
         Button medicalRecordsButton = view.findViewById(R.id.Medical_Records_Button);
         Button medicalHistoryButton = view.findViewById(R.id.Medical_History_Button);
+        Button medicationsButton = view.findViewById(R.id.Medications_Button);
         medicalRecordsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -78,6 +79,15 @@ public class PatientProfileFragment extends Fragment {
                 //Inflate New View
                 MainActivity currentActivity = (MainActivity)getActivity();
                 currentActivity.openFragment(MedicalHistoryFragment.newInstance(""));
+            }
+        });
+        medicationsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Log.d("Click", pid);
+                //Inflate New View
+                MainActivity currentActivity = (MainActivity)getActivity();
+                currentActivity.openFragment(MedicationsFragment.newInstance(""/*pid*/));
             }
         });
     }

@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("GOT HERE", "HI")
                 when (item.getItemId()) {
                     R.id.fragment_my_profile -> {
-                        openFragment(MedicationsFragment.newInstance(""))
+                        openFragment(MyProfileFragment.newInstance("",""))
 
                         return true
                     }

@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.medicalapp.R;
 
+import android.util.Log;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MedicationsFragment#newInstance} factory method to
@@ -37,8 +39,8 @@ public class MyProfileFragment extends Fragment {
    * @return A new instance of fragment HomeFragment.
    */
   // TODO: Rename and change types and number of parameters
-  public static MedicationsFragment newInstance(String param1, String param2) {
-    MedicationsFragment fragment = new MedicationsFragment();
+  public static MyProfileFragment newInstance(String param1, String param2) {
+    MyProfileFragment fragment = new MyProfileFragment();
     Bundle args = new Bundle();
     args.putString(ARG_PARAM1, param1);
     args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,7 @@ public class MyProfileFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
+    Log.d("This ran", "actually somehow");
     return inflater.inflate(R.layout.fragment_my_profile_doctor, container, false);
   }
 }
