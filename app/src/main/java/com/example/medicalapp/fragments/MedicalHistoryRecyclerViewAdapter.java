@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.MedicalHistory;
 import com.example.medicalapp.R;
 
 import java.util.ArrayList;
@@ -34,9 +35,9 @@ public class MedicalHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Medi
 
     @Override
     public void onBindViewHolder(@NonNull MedicalHistoryViewHolder holder, int position) {
-        holder.issue.setText(MedicalHistoryList.get(position).issue);
-        holder.startDate.setText(MedicalHistoryList.get(position).startDate);
-        holder.endDate.setText(MedicalHistoryList.get(position).endDate);
+        holder.issue.setText(MedicalHistoryList.get(position).getIssue());
+        holder.startDate.setText(MedicalHistoryList.get(position).getStartDate());
+        holder.endDate.setText(MedicalHistoryList.get(position).getEndDate());
     }
 
     @Override

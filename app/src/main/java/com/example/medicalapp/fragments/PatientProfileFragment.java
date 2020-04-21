@@ -6,24 +6,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.medicalapp.MainActivity;
+import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
+import com.example.medicalapp.Users;
 
 public class PatientProfileFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "pid";
 
-
-    // TODO: Rename and change types of parameters
-    private String pid;
-
+    private Patient patient;
 
     public PatientProfileFragment() {
         // Required empty public constructor
+    }
+
+    public void setPatientInfo(Patient patientInput) {
+        patient = patientInput;
     }
 
     /**
@@ -34,20 +37,15 @@ public class PatientProfileFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PatientProfileFragment newInstance(String pid) {
+    public static PatientProfileFragment newInstance(Patient patient) {
         PatientProfileFragment fragment = new PatientProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, pid);
-        fragment.setArguments(args);
+        fragment.setPatientInfo(patient);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            pid = getArguments().getString(ARG_PARAM1);
-        }
     }
 
     @Override
@@ -66,29 +64,29 @@ public class PatientProfileFragment extends Fragment {
         medicalRecordsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Log.d("Click", pid);
                 //Inflate New View
                 MainActivity currentActivity = (MainActivity)getActivity();
-                currentActivity.openFragment(MedicalRecordsFragment.newInstance(""/*mid*/));
+                currentActivity.openFragment(MedicalRecordsFragment.newInstance(patient.getPID()));
             }
         });
         medicalHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Log.d("Click", pid);
                 //Inflate New View
                 MainActivity currentActivity = (MainActivity)getActivity();
-                currentActivity.openFragment(MedicalHistoryFragment.newInstance(""));
+                currentActivity.openFragment(MedicalHistoryFragment.newInstance(patient.getPID()));
             }
         });
         medicationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Log.d("Click", pid);
                 //Inflate New View
                 MainActivity currentActivity = (MainActivity)getActivity();
-                currentActivity.openFragment(MedicationsFragment.newInstance(""/*pid*/));
+                currentActivity.openFragment(MedicationsFragment.newInstance(patient.getPID()));
             }
         });
+
+        TextView title = view.findViewById(R.id.patient_profile_title);
+        title.setText(patient.getName() + "(" + patient.getGender() + ", " + patient.getAge() + ")");
     }
 }

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.R;
+import com.example.medicalapp.Users;
 
 import java.util.ArrayList;
 
@@ -43,7 +44,7 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
 
     @Override
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
-        holder.doctors_names.setText(DoctorNamesList.get(position).Name);
+        holder.doctors_names.setText(DoctorNamesList.get(position).getName());
         holder.imageView.setImageResource(image);
 
     }

@@ -1,4 +1,4 @@
-package com.example.medicalapp.fragments;
+package com.example.medicalapp;
 
 public class Medication {
     String mid;
