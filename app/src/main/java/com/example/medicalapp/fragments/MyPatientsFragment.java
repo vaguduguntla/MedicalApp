@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
-import com.example.medicalapp.Users;
 import com.example.medicalapp.okhttp;
 
 import org.json.JSONArray;
