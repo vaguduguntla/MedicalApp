@@ -102,8 +102,6 @@ public class PatientRecyclerViewAdapter extends RecyclerView.Adapter<PatientRecy
                 public void onClick(View v){
                     Log.d("Click", "Works");
                     String clickedID = PatientNamesList.get(getAdapterPosition()).getUid();
-
-
                     //Inflate New View
                     MainActivity currentActivity = (MainActivity) v.getContext();
                     currentActivity.openFragment(PatientProfileFragment.newInstance(clickedID));

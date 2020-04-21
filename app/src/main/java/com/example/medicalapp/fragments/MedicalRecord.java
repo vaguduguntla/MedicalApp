@@ -15,7 +15,6 @@ public class MedicalRecord {
         this.Doctor = Doctor;
     }
 
-
     public String getRID() {
         return RID;
     }

@@ -13,6 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.R;
+import com.example.medicalapp.okhttp;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,16 +73,35 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState){
-        n1 = getResources().getStringArray(R.array.record_name);
-        n2 = getResources().getStringArray(R.array.type_of_record);
-        n3 = getResources().getStringArray(R.array.record_date);
-        n4 = getResources().getStringArray(R.array.doctor_names);
 
         ArrayList<String> doctor_names = new ArrayList<String>();
 
         type_to_record.put("Report",new ArrayList<MedicalRecord>());
         type_to_record.put("Lab",new ArrayList<MedicalRecord>());
         type_to_record.put("Doctors Notes",new ArrayList<MedicalRecord>());
+
+        okhttp ok = new okhttp();
+        ok.appendUrl("all_records_pid="+rid);
+
+        try {
+            String[] data = ok.run_request_and_handle_response(null);
+            JSONArray jsonArr = new JSONArray(data[0]);
+            for (int i=0;i<jsonArr.length();++i) {
+
+                MedicalRecord newRecord = new MedicalRecord(jsonArr.getJSONObject(i).getString("rid"),
+                        jsonArr.getJSONObject(i).getString("rtype"),
+                        jsonArr.getJSONObject(i).getString("rname"),
+                        jsonArr.getJSONObject(i).getString("date"),
+                        jsonArr.getJSONObject(i).getString("d")
+                );
+
+                MedicalRecordsList.add(newRecord);
+
+                type_to_record.get(jsonArr.getJSONObject(i).getString("rtype")).add(newRecord);
+            }
+        } catch (InterruptedException | JSONException e) {
+            e.printStackTrace();
+        }
 
         for(int i =0; i<n1.length; i++){
             MedicalRecord newRecord = new MedicalRecord("1", null,n1[i],n3[i], n4[i]);

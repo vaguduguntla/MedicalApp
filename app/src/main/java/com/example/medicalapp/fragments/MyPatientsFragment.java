@@ -87,13 +87,6 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
     super.onViewCreated(view,savedInstanceState);
     patientRecyclerView = view.findViewById(R.id.names_recycler_view);
     okhttp ok = new okhttp();
-    //List<Pair<String, String>> post = new ArrayList<>();
-    //post.add(new Pair("method", "insert"));
-    //post.add(new Pair("table", "users"));
-    //post.add(new Pair("type", "Doctor"));
-    //post.add(new Pair("name", "Dr Klein"));
-    //post.add(new Pair("email", "klein@gmail.com"));
-    //post.add(new Pair("password", "password"));
     ok.appendUrl("name_users");
     try {
       String[] data = ok.run_request_and_handle_response(null);
