@@ -11,12 +11,88 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_history_medication_layout"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medical_history_medications_recyclerView">
+
+      <ImageView
+          android:id="@+id/add_history_medication"
+          android:layout_width="32dp"
+          android:layout_height="31dp"
+          android:layout_marginTop="4dp"
+          android:clickable="true"
+          android:src="@drawable/ic_add_box_black_24dp"
+          app:layout_constraintEnd_toStartOf="@+id/new_history_medication_submitText"
+          app:layout_constraintTop_toTopOf="@+id/new_history_medication_submitText" />
+
+      <ImageView
+          android:id="@+id/End_Date_Calendar_Button"
+          android:layout_width="55dp"
+          android:layout_height="45dp"
+          android:clickable="true"
+          android:layout_marginStart="12dp"
+          android:src="@drawable/ic_today_black_24dp"
+          app:layout_constraintStart_toEndOf="@+id/startDate_Calendar_Button"
+          app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+      <EditText
+          android:id="@+id/new_history_medication_submitText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="50dp"
+          android:ems="10"
+          android:inputType="textPersonName"
+          android:text="Name"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+          android:id="@+id/textView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="20dp"
+          android:layout_marginTop="16dp"
+          android:text="Start Date:"
+          android:textSize="12sp"
+          app:layout_constraintStart_toEndOf="@+id/new_history_medication_submitText"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <ImageView
+          android:id="@+id/startDate_Calendar_Button"
+          android:layout_width="55dp"
+          android:layout_height="45dp"
+          android:layout_marginStart="20dp"
+          android:src="@drawable/ic_today_black_24dp"
+          android:clickable="true"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/new_history_medication_submitText"
+          app:layout_constraintTop_toBottomOf="@+id/textView"
+          app:layout_constraintVertical_bias="0.0" />
+
+      <TextView
+          android:id="@+id/textView2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="12dp"
+          android:layout_marginTop="16dp"
+          android:text="End Date:"
+          android:textSize="12sp"
+          app:layout_constraintStart_toEndOf="@+id/textView"
+          app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/medical_history_medications_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="456dp"
+        android:layout_height="400dp"
         android:layout_marginTop="96dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="75dp"
         app:layout_constraintBottom_toTopOf="@+id/add_medicalHistory_medications_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -28,7 +104,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
