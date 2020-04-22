@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.MedicalHistory;
 import com.example.medicalapp.R;
+import com.example.medicalapp.okhttp;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -29,8 +33,7 @@ public class MedicalHistoryFragment extends Fragment {
     private String hid;
 
     RecyclerView recyclerView;
-    ArrayList<MedicalHistory> MedicalHistoryList;
-
+    ArrayList<MedicalHistory> MedicalHistoryList = new ArrayList<>();
 
 
     public MedicalHistoryFragment() {
@@ -73,12 +76,27 @@ public class MedicalHistoryFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
+
+        okhttp ok =  new okhttp();
+        ok.appendUrl("all_history_pid="+hid);
+        try{
+            String data[] = ok.run_request_and_handle_response(null);
+            JSONArray jsonArr = new JSONArray(data[0]);
+            for (int i=0;i<jsonArr.length();++i) {
+                MedicalHistoryList.add(new MedicalHistory(jsonArr.getJSONObject(i).getString("hid"),
+                        jsonArr.getJSONObject(i).getString("description"), // "Person" + Integer.toString(i),
+                        jsonArr.getJSONObject(i).getString("startDate"),
+                        jsonArr.getJSONObject(i).getString("endDate")));
+            }
+        }
+        catch (InterruptedException | JSONException e){
+            e.printStackTrace();
+        }
+
         recyclerView = view.findViewById(R.id.medical_history_medications_recyclerView);
         MedicalHistoryRecyclerViewAdapter adapter = new MedicalHistoryRecyclerViewAdapter(getContext(), MedicalHistoryList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
 
     }
 }

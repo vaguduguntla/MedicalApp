@@ -6,7 +6,7 @@ public class MedicalHistory {
     String startDate;
     String endDate;
 
-    MedicalHistory(String hid, String issue, String startDate, String endDate){
+    public MedicalHistory(String hid, String issue, String startDate, String endDate){
         this.hid = hid;
         this.issue = issue;
         this.startDate = startDate;
