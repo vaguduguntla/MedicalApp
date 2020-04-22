@@ -1,14 +1,19 @@
 package com.example.medicalapp.fragments;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.CalendarActivity;
 import com.example.medicalapp.MedicalHistory;
 import com.example.medicalapp.R;
 import com.example.medicalapp.okhttp;
@@ -34,6 +39,9 @@ public class MedicalHistoryFragment extends Fragment {
 
     RecyclerView recyclerView;
     ArrayList<MedicalHistory> MedicalHistoryList = new ArrayList<>();
+    boolean startdateactivity = false;
+    boolean enddateactivity = false;
+
 
 
     public MedicalHistoryFragment() {
@@ -76,7 +84,6 @@ public class MedicalHistoryFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-
         okhttp ok =  new okhttp();
         ok.appendUrl("all_history_pid="+hid);
         try{
@@ -97,6 +104,61 @@ public class MedicalHistoryFragment extends Fragment {
         MedicalHistoryRecyclerViewAdapter adapter = new MedicalHistoryRecyclerViewAdapter(getContext(), MedicalHistoryList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        //Calendar Stuff
+        DatePickerDialog.OnDateSetListener startdateSetListener;
+        DatePickerDialog.OnDateSetListener enddateSetListener;
+        ImageView startCalendar = view.findViewById(R.id.startDate_Calendar_Button);
+        ImageView endCalendar = view.findViewById(R.id.End_Date_Calendar_Button);
+        TextView startDate = view.findViewById(R.id.SD_MHM);
+        TextView endDate = view.findViewById(R.id.ED_MHM);
+
+        if(startdateactivity){
+            Intent intent = getActivity().getIntent();
+            startDate.setText(intent.getStringExtra("date"));
+            startdateactivity = false;
+        }
+
+        if(enddateactivity){
+            Intent intent = getActivity().getIntent();
+            endDate.setText(intent.getStringExtra("date"));
+            enddateactivity = false;
+        }
+
+        
+
+
+        startCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CalendarActivity.class);
+                startActivity(intent);
+                startdateactivity = true;
+            }
+        });
+
+        endCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CalendarActivity.class);
+                startActivity(intent);
+                enddateactivity = true;
+            }
+        });
+
+        Intent startDateIntent;
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
