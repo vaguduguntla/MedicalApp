@@ -131,7 +131,7 @@ public class MyProfileFragmentDoctor extends Fragment {
   String CheckHour(String hour){
     boolean is_Am = true;
     int number = Integer.parseInt(String.valueOf(hour));
-    
+
     if(number > 12){
       number = number - 12;
       is_Am = false;

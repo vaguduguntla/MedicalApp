@@ -1,13 +1,18 @@
 package com.example.medicalapp.fragments;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.medicalapp.CalendarActivity;
 import com.example.medicalapp.R;
 import com.example.medicalapp.Users;
 
@@ -25,6 +30,10 @@ public class AddNewRecordFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     ArrayList<Users> allDoctorsList;
+    TextView displayDate;
+    ImageView calendarImage;
+    DatePickerDialog.OnDateSetListener dateSetListener;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -71,6 +80,22 @@ public class AddNewRecordFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //date stuff
+        displayDate = view.findViewById(R.id.add_record_date_edit_text);
+        calendarImage = view.findViewById(R.id.calendar);
+        Intent incomingIntent = getActivity().getIntent();
+        displayDate.setText(incomingIntent.getStringExtra("date"));
+
+        calendarImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        //doctor name autocomplete adapter stuff
         AutoCompleteTextView doctorNameEditText = view.findViewById(R.id.add_record_doc_name_inputField);
         AutoCompleteDrNameAdapter adapter = new AutoCompleteDrNameAdapter(getContext(), allDoctorsList);
         doctorNameEditText.setAdapter(adapter);
