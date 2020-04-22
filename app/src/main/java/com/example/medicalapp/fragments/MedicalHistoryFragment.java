@@ -1,6 +1,5 @@
 package com.example.medicalapp.fragments;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -41,6 +40,8 @@ public class MedicalHistoryFragment extends Fragment {
     ArrayList<MedicalHistory> MedicalHistoryList = new ArrayList<>();
     boolean startdateactivity = false;
     boolean enddateactivity = false;
+    Intent startDateIntent;
+    Intent endDateIntent;
 
 
 
@@ -106,26 +107,13 @@ public class MedicalHistoryFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //Calendar Stuff
-        DatePickerDialog.OnDateSetListener startdateSetListener;
-        DatePickerDialog.OnDateSetListener enddateSetListener;
         ImageView startCalendar = view.findViewById(R.id.startDate_Calendar_Button);
         ImageView endCalendar = view.findViewById(R.id.End_Date_Calendar_Button);
         TextView startDate = view.findViewById(R.id.SD_MHM);
         TextView endDate = view.findViewById(R.id.ED_MHM);
+        startDate.setText(startDateIntent.getStringExtra("date"));
+        endDate.setText(endDateIntent.getStringExtra("date"));
 
-        if(startdateactivity){
-            Intent intent = getActivity().getIntent();
-            startDate.setText(intent.getStringExtra("date"));
-            startdateactivity = false;
-        }
-
-        if(enddateactivity){
-            Intent intent = getActivity().getIntent();
-            endDate.setText(intent.getStringExtra("date"));
-            enddateactivity = false;
-        }
-
-        
 
 
         startCalendar.setOnClickListener(new View.OnClickListener() {
@@ -133,8 +121,10 @@ public class MedicalHistoryFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CalendarActivity.class);
                 startActivity(intent);
-                startdateactivity = true;
+                startDateIntent = getActivity().getIntent();
+
             }
+
         });
 
         endCalendar.setOnClickListener(new View.OnClickListener() {
@@ -142,23 +132,10 @@ public class MedicalHistoryFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CalendarActivity.class);
                 startActivity(intent);
-                enddateactivity = true;
+                endDateIntent = getActivity().getIntent();
+
             }
         });
-
-        Intent startDateIntent;
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }
