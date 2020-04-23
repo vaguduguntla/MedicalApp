@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ import com.example.medicalapp.okhttp;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -38,7 +40,8 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
         // Required empty public constructor
     }
     RecyclerView recyclerView;
-    String n1[], n2[], n3[], n4[];
+
+    //String n1[], n2[], n3[], n4[];
 
     ArrayList<MedicalRecord> MedicalRecordsList = new ArrayList<MedicalRecord>();
     /**
@@ -77,6 +80,8 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
 
         ArrayList<String> doctor_names = new ArrayList<String>();
 
+        doctor_names.add("Any Doctor");
+
         type_to_record.put("Report",new ArrayList<MedicalRecord>());
         type_to_record.put("Lab",new ArrayList<MedicalRecord>());
         type_to_record.put("Doctors Notes",new ArrayList<MedicalRecord>());
@@ -93,18 +98,26 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
                         jsonArr.getJSONObject(i).getString("rtype"),
                         jsonArr.getJSONObject(i).getString("rname"),
                         jsonArr.getJSONObject(i).getString("date"),
-                        jsonArr.getJSONObject(i).getString("d")
+                        jsonArr.getJSONObject(i).getString("name")
                 );
 
                 MedicalRecordsList.add(newRecord);
 
                 type_to_record.get(jsonArr.getJSONObject(i).getString("rtype")).add(newRecord);
+
+                if (doctor_names_to_records.containsKey(newRecord.getDoctor())) {
+                    doctor_names_to_records.get(newRecord.getDoctor()).add(newRecord);
+                }
+                else {
+                    doctor_names.add(newRecord.getDoctor());
+                    doctor_names_to_records.put(newRecord.getDoctor(),new ArrayList<MedicalRecord>(Arrays.asList(newRecord)));
+                }
             }
         } catch (InterruptedException | JSONException e) {
             e.printStackTrace();
         }
 
-        for(int i =0; i<n1.length; i++){
+        /*for(int i =0; i<n1.length; i++){
             MedicalRecord newRecord = new MedicalRecord("1", null,n1[i],n3[i], n4[i]);
             MedicalRecordsList.add(newRecord);
             doctor_names.add(n4[i]);
@@ -115,7 +128,7 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
             else {
                 doctor_names_to_records.put(n4[i],new ArrayList<MedicalRecord>(Arrays.asList(newRecord)));
             }
-        }
+        }*/
 
         recyclerView = view.findViewById(R.id.medical_records_recycler_view);
         MedicalRecordsRecyclerViewAdapter adapter = new MedicalRecordsRecyclerViewAdapter(getContext(),MedicalRecordsList);
@@ -129,12 +142,35 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
         spinnerArrayAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         doctor_name_spinner.setAdapter(spinnerArrayAdaptor);
+
+
+        AdapterView doctor_name_filter = (AdapterView)doctor_name_spinner;
+        doctor_name_filter.setOnItemSelectedListener(this);
+        AdapterView record_type_filter = (AdapterView) view.findViewById(R.id.type_spinner);
+        record_type_filter.setOnItemSelectedListener(this);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
         Log.d("Item_selected:",item);
+
+        String record_type = ((Spinner) (getView().findViewById(R.id.type_spinner))).getSelectedItem().toString();
+
+        String doctor_name  = ((Spinner) (getView().findViewById(R.id.doctor_spinner))).getSelectedItem().toString();
+
+        ((MedicalRecordsRecyclerViewAdapter)recyclerView.getAdapter()).setDoctorName(doctor_name);
+        ((MedicalRecordsRecyclerViewAdapter)recyclerView.getAdapter()).setRecordType(record_type);
+
+        if (parent.getId() == R.id.type_spinner) {
+            //if (item == "All")
+        }
+        else {
+            ;
+        }
+
+
+
     }
 
     @Override

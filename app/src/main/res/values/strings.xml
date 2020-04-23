@@ -38,6 +38,7 @@
     </string-array>
 
     <string-array name="type_of_record">
+        <item>Any Type</item>
         <item>Report</item>
         <item>Lab</item>
         <item>Doctors Notes</item>
