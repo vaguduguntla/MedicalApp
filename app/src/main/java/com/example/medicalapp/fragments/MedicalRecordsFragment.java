@@ -33,9 +33,6 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
     // TODO: Rename and change types of parameters
     private String rid;
 
-    private HashMap<String,ArrayList<MedicalRecord>> doctor_names_to_records = new HashMap<>();
-    private HashMap<String,ArrayList<MedicalRecord>> type_to_record = new HashMap<>();
-
     public MedicalRecordsFragment() {
         // Required empty public constructor
     }
@@ -43,7 +40,6 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
 
     //String n1[], n2[], n3[], n4[];
 
-    ArrayList<MedicalRecord> MedicalRecordsList = new ArrayList<MedicalRecord>();
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -80,6 +76,11 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
 
         ArrayList<String> doctor_names = new ArrayList<String>();
 
+        ArrayList<MedicalRecord> MedicalRecordsList = new ArrayList<MedicalRecord>();
+
+        HashMap<String,ArrayList<MedicalRecord>> doctor_names_to_records = new HashMap<>();
+        HashMap<String,ArrayList<MedicalRecord>> type_to_record = new HashMap<>();
+
         doctor_names.add("Any Doctor");
 
         type_to_record.put("Report",new ArrayList<MedicalRecord>());
@@ -113,6 +114,8 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
                     doctor_names_to_records.put(newRecord.getDoctor(),new ArrayList<MedicalRecord>(Arrays.asList(newRecord)));
                 }
             }
+
+
         } catch (InterruptedException | JSONException e) {
             e.printStackTrace();
         }
@@ -131,7 +134,7 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
         }*/
 
         recyclerView = view.findViewById(R.id.medical_records_recycler_view);
-        MedicalRecordsRecyclerViewAdapter adapter = new MedicalRecordsRecyclerViewAdapter(getContext(),MedicalRecordsList);
+        MedicalRecordsRecyclerViewAdapter adapter = new MedicalRecordsRecyclerViewAdapter(getContext(),MedicalRecordsList, doctor_names_to_records, type_to_record);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -162,14 +165,13 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
         ((MedicalRecordsRecyclerViewAdapter)recyclerView.getAdapter()).setDoctorName(doctor_name);
         ((MedicalRecordsRecyclerViewAdapter)recyclerView.getAdapter()).setRecordType(record_type);
 
-        if (parent.getId() == R.id.type_spinner) {
+        /*if (parent.getId() == R.id.type_spinner) {
             //if (item == "All")
         }
         else {
             ;
-        }
-
-
+        }*/
+        ((MedicalRecordsRecyclerViewAdapter) recyclerView.getAdapter()).getFilter().filter(null);
 
     }
 

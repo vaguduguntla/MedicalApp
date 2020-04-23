@@ -16,17 +16,25 @@ import com.example.medicalapp.MedicalRecord;
 import com.example.medicalapp.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MedicalRecordsRecyclerViewAdapter extends RecyclerView.Adapter<MedicalRecordsRecyclerViewAdapter.MedicalRecordsViewHolder> implements Filterable {
+    ArrayList<MedicalRecord> AllMedicalRecordsList;
     ArrayList<MedicalRecord> MedicalRecordsList;
     Context context;
 
     String recordType;
     String doctorName;
 
-    public MedicalRecordsRecyclerViewAdapter(Context ct, ArrayList<MedicalRecord> List){
+    private HashMap<String,ArrayList<MedicalRecord>> doctor_names_to_records = new HashMap<>();
+    private HashMap<String,ArrayList<MedicalRecord>> type_to_record = new HashMap<>();
+
+    public MedicalRecordsRecyclerViewAdapter(Context ct, ArrayList<MedicalRecord> List, HashMap<String,ArrayList<MedicalRecord>> doc_names, HashMap<String,ArrayList<MedicalRecord>> types){
         context = ct;
-        MedicalRecordsList = new ArrayList<>(List);
+        AllMedicalRecordsList = List;
+        MedicalRecordsList = List;
+        doctor_names_to_records = doc_names;
+        type_to_record = types;
     }
 
     public void setDoctorName(String doctorName) {
@@ -59,23 +67,40 @@ public class MedicalRecordsRecyclerViewAdapter extends RecyclerView.Adapter<Medi
 
     @Override
     public Filter getFilter() {
-        return null;
+        return medicalRecordFilter;
     }
 
     Filter medicalRecordFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint1) {
 
+            FilterResults results = new FilterResults();
+
             if (recordType.equals("Any Type") && doctorName.equals("Any Doctor")) {
-
-
+                results.values = AllMedicalRecordsList;
             }
-            return new FilterResults();
+            else if (recordType.equals("Any Type")) {
+                results.values = doctor_names_to_records.get(doctorName);
+            }
+            else if (doctorName.equals("Any Doctor")) {
+                results.values = type_to_record.get(recordType);
+            }
+            else {
+                ArrayList<MedicalRecord> resultSet_1 = doctor_names_to_records.get(doctorName);
+
+                ArrayList<MedicalRecord> resultSet_2 = type_to_record.get(recordType);
+
+                resultSet_1.retainAll(resultSet_2);
+
+                results.values = resultSet_1;
+            }
+            return results;
         }
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-
+            MedicalRecordsList = (ArrayList) results.values;
+            notifyDataSetChanged();
         }
 
     };
