@@ -36,13 +36,14 @@ public class MedicalHistoryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String hid;
 
+
+
     RecyclerView recyclerView;
     ArrayList<MedicalHistory> MedicalHistoryList = new ArrayList<>();
-    boolean startdateactivity = false;
-    boolean enddateactivity = false;
     Intent startDateIntent;
     Intent endDateIntent;
-
+    TextView startDate;
+    TextView endDate;
 
 
     public MedicalHistoryFragment() {
@@ -85,6 +86,9 @@ public class MedicalHistoryFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
+        startDate = view.findViewById(R.id.SD_MHM);
+        endDate = view.findViewById(R.id.ED_MHM);
+
         okhttp ok =  new okhttp();
         ok.appendUrl("all_history_pid="+hid);
         try{
@@ -109,10 +113,9 @@ public class MedicalHistoryFragment extends Fragment {
         //Calendar Stuff
         ImageView startCalendar = view.findViewById(R.id.startDate_Calendar_Button);
         ImageView endCalendar = view.findViewById(R.id.End_Date_Calendar_Button);
-        TextView startDate = view.findViewById(R.id.SD_MHM);
-        TextView endDate = view.findViewById(R.id.ED_MHM);
-        startDate.setText(startDateIntent.getStringExtra("date"));
-        endDate.setText(endDateIntent.getStringExtra("date"));
+
+
+
 
 
 
@@ -122,6 +125,7 @@ public class MedicalHistoryFragment extends Fragment {
                 Intent intent = new Intent(getContext(), CalendarActivity.class);
                 startActivity(intent);
                 startDateIntent = getActivity().getIntent();
+                startDate.setText(startDateIntent.getStringExtra("date"));
 
             }
 
@@ -133,6 +137,7 @@ public class MedicalHistoryFragment extends Fragment {
                 Intent intent = new Intent(getContext(), CalendarActivity.class);
                 startActivity(intent);
                 endDateIntent = getActivity().getIntent();
+                endDate.setText(endDateIntent.getStringExtra("date"));
 
             }
         });

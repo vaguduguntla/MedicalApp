@@ -13,8 +13,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.medicalapp.CalendarActivity;
+import com.example.medicalapp.Doctor;
 import com.example.medicalapp.R;
-import com.example.medicalapp.Users;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ public class AddNewRecordFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    ArrayList<Users> allDoctorsList;
+    ArrayList<Doctor> allDoctorsList;
     TextView displayDate;
     ImageView calendarImage;
     DatePickerDialog.OnDateSetListener dateSetListener;

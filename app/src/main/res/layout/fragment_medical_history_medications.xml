@@ -9,13 +9,15 @@
 
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="match_parent"
+      android:background="#8BC34A">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/add_history_medication_layout"
-        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="105dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/add_medicalHistory_medications_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/medical_history_medications_recyclerView">
@@ -34,8 +36,8 @@
           android:id="@+id/End_Date_Calendar_Button"
           android:layout_width="55dp"
           android:layout_height="45dp"
-          android:clickable="true"
           android:layout_marginStart="12dp"
+          android:clickable="true"
           android:src="@drawable/ic_today_black_24dp"
           app:layout_constraintStart_toEndOf="@+id/startDate_Calendar_Button"
           app:layout_constraintTop_toBottomOf="@+id/ED_MHM" />
@@ -68,8 +70,8 @@
           android:layout_width="55dp"
           android:layout_height="45dp"
           android:layout_marginStart="20dp"
-          android:src="@drawable/ic_today_black_24dp"
           android:clickable="true"
+          android:src="@drawable/ic_today_black_24dp"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintStart_toEndOf="@+id/new_history_medication_submitText"
           app:layout_constraintTop_toBottomOf="@+id/SD_MHM"
@@ -97,13 +99,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.034" />
 
     <Button
         android:id="@+id/add_medicalHistory_medications_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

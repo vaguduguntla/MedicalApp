@@ -1,7 +1,6 @@
 package com.example.medicalapp.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
-import com.example.medicalapp.Users;
 
 public class PatientProfileFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match

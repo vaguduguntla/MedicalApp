@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.Doctor;
 import com.example.medicalapp.R;
-import com.example.medicalapp.Users;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class MyNetworkFragment extends Fragment implements SearchView.OnQueryTex
   public MyNetworkFragment() {
     // Required empty public constructor
   }
-  ArrayList<Users> DoctorNamesList = new ArrayList<>();
+  ArrayList<Doctor> DoctorNamesList = new ArrayList<>();
   String TempList[];
   int img = R.drawable.ic_doctor;
   RecyclerView doctorReyclerView;
@@ -81,7 +81,7 @@ public class MyNetworkFragment extends Fragment implements SearchView.OnQueryTex
 
     //Will Change Once Backend is finished
     for(int i = 0; i<TempList.length; i++) {
-      DoctorNamesList.add(new Users("1",TempList[i]));
+      DoctorNamesList.add(new Doctor("1",TempList[i]));
     }
 
     //

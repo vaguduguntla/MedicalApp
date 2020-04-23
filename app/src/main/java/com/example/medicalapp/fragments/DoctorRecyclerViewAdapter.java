@@ -14,19 +14,22 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.Doctor;
 import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.R;
-import com.example.medicalapp.Users;
 
 import java.util.ArrayList;
 
 public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecyclerViewAdapter.DoctorViewHolder> implements Filterable {
-    ArrayList<Users> DoctorNamesList;
-    ArrayList<Users> DoctorNamesListFull;
+    ArrayList<Doctor> DoctorNamesList;
+    ArrayList<Doctor> DoctorNamesListFull;
     int image;
     Context context;
 
-    public DoctorRecyclerViewAdapter(ArrayList<Users> s1, Context ct, int img){
+
+
+
+    public DoctorRecyclerViewAdapter(ArrayList<Doctor> s1, Context ct, int img){
         image = img;
         context = ct;
         DoctorNamesList = s1;
@@ -61,15 +64,15 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
     Filter doctorNameFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            ArrayList<Users> filteredList = new ArrayList<>();
+            ArrayList<Doctor> filteredList = new ArrayList<>();
             if(constraint == null || constraint.length() == 0){
                 filteredList.addAll(DoctorNamesListFull);
             }
             else{
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for(Users user: DoctorNamesListFull){
-                    if(user.getName().toLowerCase().contains(filterPattern)){
-                        filteredList.add(user);
+                for(Doctor doctor: DoctorNamesListFull){
+                    if(doctor.getName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(doctor);
                     }
                 }
             }
@@ -103,7 +106,7 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
                 @Override
                 public void onClick(View v){
                     Log.d("Click", "Works");
-                    String clickedID = DoctorNamesList.get(getAdapterPosition()).getUid();
+                    String clickedID = DoctorNamesList.get(getAdapterPosition()).getDid();
 
 
                     //Inflate New View

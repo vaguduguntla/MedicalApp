@@ -1,6 +1,6 @@
 package com.example.medicalapp;
 
-public class Patient {
+public class Patient  {
 
     private String name;
     private String PID;

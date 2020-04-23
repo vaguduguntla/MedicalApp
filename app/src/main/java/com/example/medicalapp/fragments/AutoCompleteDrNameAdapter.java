@@ -11,16 +11,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.medicalapp.Doctor;
 import com.example.medicalapp.R;
-import com.example.medicalapp.Users;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AutoCompleteDrNameAdapter extends ArrayAdapter<Users> {
-    List<Users> DrNamesListFull;
+public class AutoCompleteDrNameAdapter extends ArrayAdapter<Doctor> {
+    List<Doctor> DrNamesListFull;
 
-    public AutoCompleteDrNameAdapter(@NonNull Context context, @NonNull List<Users> DrNamesList) {
+    public AutoCompleteDrNameAdapter(@NonNull Context context, @NonNull List<Doctor> DrNamesList) {
         super(context, 0, DrNamesList);
         DrNamesListFull = new ArrayList<>(DrNamesList);
     }
@@ -38,10 +38,10 @@ public class AutoCompleteDrNameAdapter extends ArrayAdapter<Users> {
         }
         TextView drName = convertView.findViewById(R.id.add_record_doc_name_inputField);
 
-        Users user = getItem(position);
+        Doctor doctor = getItem(position);
 
         if(convertView != null){
-            drName.setText(user.getName());
+            drName.setText(doctor.getName());
         }
 
         return convertView;
@@ -51,15 +51,15 @@ public class AutoCompleteDrNameAdapter extends ArrayAdapter<Users> {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
-            List<Users> Suggestions = new ArrayList<>();
+            List<Doctor> Suggestions = new ArrayList<>();
             if(constraint == null || constraint.length() ==0){
                 Suggestions.addAll(DrNamesListFull);
             }
             else{
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for(Users user: DrNamesListFull){
-                    if(user.getName().toLowerCase().contains(filterPattern)){
-                        Suggestions.add(user);
+                for(Doctor doctor: DrNamesListFull){
+                    if(doctor.getName().toLowerCase().contains(filterPattern)){
+                        Suggestions.add(doctor);
 
                     }
                 }
@@ -78,7 +78,7 @@ public class AutoCompleteDrNameAdapter extends ArrayAdapter<Users> {
 
         @Override
         public CharSequence convertResultToString(Object resultValue) {
-            return ((Users)resultValue).getName();
+            return ((Doctor)resultValue).getName();
         }
     };
 }
