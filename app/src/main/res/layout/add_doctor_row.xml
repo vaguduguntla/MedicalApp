@@ -25,7 +25,7 @@
             android:background="#C3EA96">
 
             <TextView
-                android:id="@+id/doctor_names"
+                android:id="@+id/names"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
@@ -39,7 +39,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/add_doctor_plus_button"
+                android:id="@+id/image_next_to_name"
                 android:layout_width="54dp"
                 android:clickable="true"
                 android:layout_height="38dp"
@@ -52,15 +52,15 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/specialty_row_textView"
+                android:id="@+id/add_doctor_specialty_row_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="4dp"
                 android:text="TextView"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/doctor_names"
-                app:layout_constraintTop_toTopOf="@+id/doctor_names" />
+                app:layout_constraintStart_toEndOf="@+id/names"
+                app:layout_constraintTop_toTopOf="@+id/names" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
