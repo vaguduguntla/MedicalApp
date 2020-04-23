@@ -10,7 +10,6 @@
         android:id="@+id/add_docto_Names"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:visibility="visible"
@@ -42,6 +41,7 @@
             <ImageView
                 android:id="@+id/add_doctor_plus_button"
                 android:layout_width="54dp"
+                android:clickable="true"
                 android:layout_height="38dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

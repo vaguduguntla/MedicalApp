@@ -114,6 +114,7 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
                     currentActivity.openFragment(DoctorProfileFragment.newInstance(clickedID));
                 }
             });
+
         }
 
     }
