@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
                         return true
                     }
                     R.id.fragment_my_network -> {
-                        openFragment(MyNetworkFragment.newInstance("",""))
+                        openFragment(MyNetworkFragment.newInstance(did,""))
 
                         return true
                     }
