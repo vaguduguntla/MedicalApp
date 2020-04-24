@@ -19,14 +19,14 @@ public class MedicationsRecyclerViewAdapter extends RecyclerView.Adapter<Medicat
     Context context;
     public MedicationsRecyclerViewAdapter(Context ct, ArrayList<Medication> List){
         context = ct;
-        MedicationsList = new ArrayList<>(List);
+        MedicationsList = List;
     }
 
     @NonNull
     @Override
     public MedicationsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.medical_records_row, parent, false);
+        View view = layoutInflater.inflate(R.layout.medical_history_medications_row, parent, false);
         return new MedicationsViewHolder(view);
     }
 
