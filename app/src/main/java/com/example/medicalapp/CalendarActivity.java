@@ -8,14 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.medicalapp.fragments.AddNewRecordFragment;
-
 public class CalendarActivity extends AppCompatActivity {
 
     CalendarView calendarView;
+    Intent incomingIntent;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_layout);
         calendarView = (CalendarView) findViewById(R.id.calendarView);
@@ -25,9 +27,9 @@ public class CalendarActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String date = (month + 1) + "/" + dayOfMonth + "/" + year;
 
-                Intent intent = new Intent(CalendarActivity.this, AddNewRecordFragment.class);
-                intent.putExtra("date", date);
-                startActivity(intent);
+                //Intent intent = new Intent(this, getIntent().getBundleExtra("AddPatientfragmentBundle"));
+               // intent.putExtra("date", date);
+                //startActivity(intent);
 
             }
         });

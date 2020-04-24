@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -79,7 +78,7 @@ public class AddNewRecordFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(View view, final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //date stuff
         displayDate = view.findViewById(R.id.add_record_date_edit_text);
@@ -91,6 +90,7 @@ public class AddNewRecordFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CalendarActivity.class);
+                intent.putExtra("AddPatientfragmentBundle",savedInstanceState);
                 startActivity(intent);
             }
         });
