@@ -83,6 +83,9 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view,savedInstanceState);
+
+    PatientNamesList.clear();
+
     patientRecyclerView = view.findViewById(R.id.names_recycler_view);
     okhttp ok = new okhttp();
     ok.appendUrl("all_patients");

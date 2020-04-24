@@ -158,19 +158,24 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
         String item = parent.getItemAtPosition(position).toString();
         Log.d("Item_selected:",item);
 
-        String record_type = ((Spinner) (getView().findViewById(R.id.type_spinner))).getSelectedItem().toString();
-
-        String doctor_name  = ((Spinner) (getView().findViewById(R.id.doctor_spinner))).getSelectedItem().toString();
-
-        ((MedicalRecordsRecyclerViewAdapter)recyclerView.getAdapter()).setDoctorName(doctor_name);
-        ((MedicalRecordsRecyclerViewAdapter)recyclerView.getAdapter()).setRecordType(record_type);
-
         /*if (parent.getId() == R.id.type_spinner) {
             //if (item == "All")
         }
         else {
-            ;
+
         }*/
+
+        String record_type = ((Spinner) (getView().findViewById(R.id.type_spinner))).getSelectedItem().toString();
+
+        String doctor_name  = ((Spinner) (getView().findViewById(R.id.doctor_spinner))).getSelectedItem().toString();
+
+        Log.d("Type", record_type);
+        Log.d("Doctor", doctor_name);
+
+        ((MedicalRecordsRecyclerViewAdapter)recyclerView.getAdapter()).setDoctorName(doctor_name);
+        ((MedicalRecordsRecyclerViewAdapter)recyclerView.getAdapter()).setRecordType(record_type);
+
+
         ((MedicalRecordsRecyclerViewAdapter) recyclerView.getAdapter()).getFilter().filter(null);
 
     }

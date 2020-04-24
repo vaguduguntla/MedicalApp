@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -114,10 +115,15 @@ public class MedicalHistoryFragment extends Fragment {
         ImageView startCalendar = view.findViewById(R.id.startDate_Calendar_Button);
         ImageView endCalendar = view.findViewById(R.id.End_Date_Calendar_Button);
 
+        Button addHistoryButton = view.findViewById(R.id.add_medicalHistory_medications_button);
 
+        addHistoryButton.setText("Add Medical History Item");
 
-
-
+        addHistoryButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                getView().findViewById(R.id.add_history_medication_layout).setVisibility(View.VISIBLE);
+            }
+        });
 
         startCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
