@@ -1,6 +1,10 @@
 package com.example.medicalapp.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -13,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.medicalapp.R;
 import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
@@ -72,7 +77,25 @@ public class QrScannerFragment extends Fragment {
 
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
+                cameraSource.stop();
+            }
+        });
 
+        barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
+            @Override
+            public void release() {
+
+            }
+
+            @Override
+            public void receiveDetections(Detector.Detections<Barcode> detections) {
+                SparseArray<Barcode> qrCodes = detections.getDetectedItems();
+
+                if (qrCodes.size() != 0) {
+                    Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+                    vibrator.vibrate(1000);
+                    Log.d("Code", qrCodes.valueAt(0).displayValue);
+                }
             }
         });
     }
