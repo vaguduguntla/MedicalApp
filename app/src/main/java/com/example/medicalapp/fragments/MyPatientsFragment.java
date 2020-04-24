@@ -5,12 +5,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
 import com.example.medicalapp.okhttp;
@@ -83,6 +85,15 @@ public class MyPatientsFragment extends Fragment implements SearchView.OnQueryTe
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view,savedInstanceState);
+
+    Button addPatientButton = view.findViewById(R.id.add_user_button);
+
+    addPatientButton.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        MainActivity currentActivity = (MainActivity) v.getContext();
+        currentActivity.openFragment(QrScannerFragment.newInstance());
+      }
+    });
 
     PatientNamesList.clear();
 

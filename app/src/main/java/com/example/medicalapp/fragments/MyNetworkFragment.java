@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.Doctor;
+import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.R;
 import com.example.medicalapp.okhttp;
 
@@ -81,6 +82,7 @@ public class MyNetworkFragment extends Fragment implements SearchView.OnQueryTex
 
   public void onViewCreated(View view, Bundle savedInstanceState){
     super.onViewCreated(view, savedInstanceState);
+    DoctorNamesList.clear();
     okhttp ok = new okhttp();
     okhttp ok1 = new okhttp();
     ok.appendUrl("all_doctors_did=1");
@@ -97,15 +99,23 @@ public class MyNetworkFragment extends Fragment implements SearchView.OnQueryTex
     }
     for (int i = 0; i < didList.length-1; i++){
       DoctorNamesList.add(new Doctor(didList[i],didList[i+1]));
-
       }
 
     doctorReyclerView = view.findViewById(R.id.names_recycler_view);
     Button btn = (Button) view.findViewById(R.id.add_user_button);
     btn.setText(getResources().getString(R.string.add_new_doctor));
+
+    btn.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View v) {
+        MainActivity currentActivity = (MainActivity) v.getContext();
+        currentActivity.openFragment(AddDoctorFragment.newInstance(currentActivity.rootDoctor.getDid()));
+      }
+    });
+
     doctorRecyclerViewAdapter = new DoctorRecyclerViewAdapter(DoctorNamesList, getContext(), img);
     doctorReyclerView.setAdapter(doctorRecyclerViewAdapter);
     doctorReyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
   }
 
   @Override
