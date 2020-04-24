@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.medicalapp.CalendarActivity;
 import com.example.medicalapp.Doctor;
+import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
 
@@ -94,10 +95,12 @@ public class AddNewRecordFragment extends Fragment {
             }
         });
 
-
         //doctor name autocomplete adapter stuff
-        AutoCompleteTextView doctorNameEditText = view.findViewById(R.id.add_record_doc_name_inputField);
+        /*AutoCompleteTextView doctorNameEditText = view.findViewById(R.id.add_record_doc_name_inputField);
         AutoCompleteDrNameAdapter adapter = new AutoCompleteDrNameAdapter(getContext(), allDoctorsList);
-        doctorNameEditText.setAdapter(adapter);
+        doctorNameEditText.setAdapter(adapter);*/
+
+        TextView doctorName = view.findViewById(R.id.add_record_doc_name_inputField);
+        doctorName.setText(((MainActivity)getActivity()).rootDoctor.getName());
     }
 }

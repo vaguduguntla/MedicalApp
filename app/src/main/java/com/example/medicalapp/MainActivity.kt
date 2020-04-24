@@ -16,11 +16,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    var did = "5"
+    var did = "1"
+    lateinit var rootDoctor:Doctor
     lateinit var bottomNavigation: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        rootDoctor = Doctor(did, "Dr Richard")
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
         openFragment(MyProfileFragmentDoctor.newInstance("",""))
