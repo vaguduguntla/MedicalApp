@@ -7,7 +7,13 @@ public class Medication {
     String startDate;
     String endDate;
 
-    public Medication(String mid, String pid, String name, String startDate, String endDate) {}
+    public Medication(String mid, String pid, String name, String startDate, String endDate) {
+        this.mid = mid;
+        this.pid = pid;
+        this.Name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     public String getMid() {
         return mid;

@@ -88,6 +88,11 @@ public class MedicalHistoryFragment extends Fragment {
         startDate = view.findViewById(R.id.SD_MHM);
         endDate = view.findViewById(R.id.ED_MHM);
 
+        TextView ownershipText = view.findViewById(R.id.ownership_textView);
+        ownershipText.setText(patient.getName() + "'s");
+        TextView pageType = view.findViewById(R.id.page_type_textView);
+        pageType.setText("Medical History");
+
         okhttp ok =  new okhttp();
         ok.appendUrl("all_history_pid="+patient.getPID());
         try{

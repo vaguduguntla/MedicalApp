@@ -1,9 +1,12 @@
 package com.example.medicalapp.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -70,6 +73,16 @@ public class MedicationsFragment extends Fragment {
 
     public void onViewCreated(View view, Bundle savedInstanceState){
         recyclerView = view.findViewById(R.id.medical_history_medications_recyclerView);
+
+        Button addMedicationsButton = view.findViewById(R.id.add_medicalHistory_medications_button);
+
+        addMedicationsButton.setText("Add Medication");
+
+        TextView ownershipText = view.findViewById(R.id.ownership_textView);
+        ownershipText.setText(patient.getName() + "'s");
+        TextView pageType = view.findViewById(R.id.page_type_textView);
+        pageType.setText("Medications");
+
         okhttp ok = new okhttp();
         ok.appendUrl("all_meds_pid="+patient.getPID());
         try {
