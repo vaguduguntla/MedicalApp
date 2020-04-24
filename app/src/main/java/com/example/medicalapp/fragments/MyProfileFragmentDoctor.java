@@ -138,10 +138,10 @@ public class MyProfileFragmentDoctor extends Fragment {
     }
     String result = Integer.toString(number);
     if(is_Am){
-      result.concat(" AM");
+      result = result + " AM";
     }
     else{
-      result.concat(" PM");
+      result = result + " PM";
     }
     return result;
   }

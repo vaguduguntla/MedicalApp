@@ -82,7 +82,8 @@ public class MyNetworkFragment extends Fragment implements SearchView.OnQueryTex
   public void onViewCreated(View view, Bundle savedInstanceState){
     super.onViewCreated(view, savedInstanceState);
     okhttp ok = new okhttp();
-    ok.appendUrl("all_doctors_did=2");
+    okhttp ok1 = new okhttp();
+    ok.appendUrl("all_doctors_did=1");
     try {
       String[] data = ok.run_request_and_handle_response(null);
       JSONArray jsonArr = new JSONArray(data[0]);
@@ -94,29 +95,10 @@ public class MyNetworkFragment extends Fragment implements SearchView.OnQueryTex
     catch (InterruptedException | JSONException e){
       e.printStackTrace();
     }
-    for (int i = 0; i < didList.length; i++){
-      ok.appendUrl("all_doctors_did=1");
-      try{
-        String[] data = ok.run_request_and_handle_response(null);
-        JSONArray jsonArray = new JSONArray(data[0]);
-        for(int j = 0; j < jsonArray.length(); j++){
-          DoctorNamesList.add(new Doctor(jsonArray.getJSONObject(i).getString("did"),jsonArray.getJSONObject(i).getString("name")));
-        }
+    for (int i = 0; i < didList.length-1; i++){
+      DoctorNamesList.add(new Doctor(didList[i],didList[i+1]));
 
       }
-      catch(InterruptedException | JSONException e){
-        e.printStackTrace();
-      }
-
-
-    }
-
-
-
-    //Will Change Once Backend is finished
-
-
-    //
 
     doctorReyclerView = view.findViewById(R.id.names_recycler_view);
     Button btn = (Button) view.findViewById(R.id.add_user_button);
