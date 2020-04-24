@@ -13,6 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.Doctor;
 import com.example.medicalapp.R;
+import com.example.medicalapp.okhttp;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -35,7 +39,8 @@ public class MyNetworkFragment extends Fragment implements SearchView.OnQueryTex
     // Required empty public constructor
   }
   ArrayList<Doctor> DoctorNamesList = new ArrayList<>();
-  String TempList[];
+  String TempList;
+  String didList[];
   int img = R.drawable.ic_doctor;
   RecyclerView doctorReyclerView;
   DoctorRecyclerViewAdapter doctorRecyclerViewAdapter;
@@ -76,13 +81,40 @@ public class MyNetworkFragment extends Fragment implements SearchView.OnQueryTex
 
   public void onViewCreated(View view, Bundle savedInstanceState){
     super.onViewCreated(view, savedInstanceState);
-    TempList = getResources().getStringArray(R.array.doctor_names);
+    okhttp ok = new okhttp();
+    ok.appendUrl("all_doctors_did=2");
+    try {
+      String[] data = ok.run_request_and_handle_response(null);
+      JSONArray jsonArr = new JSONArray(data[0]);
+
+      for (int i=0;i<jsonArr.length();++i) {
+        didList = jsonArr.getJSONObject(i).getString("doctors").split(",");
+      }
+      }
+    catch (InterruptedException | JSONException e){
+      e.printStackTrace();
+    }
+    for (int i = 0; i < didList.length; i++){
+      ok.appendUrl("all_doctors_did=1");
+      try{
+        String[] data = ok.run_request_and_handle_response(null);
+        JSONArray jsonArray = new JSONArray(data[0]);
+        for(int j = 0; j < jsonArray.length(); j++){
+          DoctorNamesList.add(new Doctor(jsonArray.getJSONObject(i).getString("did"),jsonArray.getJSONObject(i).getString("name")));
+        }
+
+      }
+      catch(InterruptedException | JSONException e){
+        e.printStackTrace();
+      }
+
+
+    }
+
 
 
     //Will Change Once Backend is finished
-    for(int i = 0; i<TempList.length; i++) {
-      DoctorNamesList.add(new Doctor("1",TempList[i]));
-    }
+
 
     //
 
