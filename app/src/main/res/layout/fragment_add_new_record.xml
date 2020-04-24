@@ -88,11 +88,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/doctor_name_layout">
 
-            <AutoCompleteTextView
+            <Spinner
+                android:id="@+id/add_record_record_type_spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:completionHint="Select Record Type"
-                android:hint="Enter Record Type"></AutoCompleteTextView>
+                android:entries="@array/type_of_record"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical" />
         </LinearLayout>
 
         <LinearLayout
