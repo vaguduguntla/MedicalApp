@@ -49,6 +49,7 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
         holder.doctors_names.setText(DoctorNamesList.get(position).getName());
         holder.imageView.setImageResource(image);
+        holder.specialty.setText(DoctorNamesList.get(position).getSpecialty());
 
     }
 
@@ -94,10 +95,12 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
     public class DoctorViewHolder extends RecyclerView.ViewHolder {
         TextView doctors_names;
         ImageView imageView;
+        TextView specialty;
         public DoctorViewHolder(@NonNull View itemView) {
             super(itemView);
             doctors_names = itemView.findViewById(R.id.names);
             imageView = itemView.findViewById(R.id.image_next_to_name);
+            specialty = itemView.findViewById(R.id.add_doctor_specialty_row_textView);
             final CardView cardView = (CardView)itemView.findViewById(R.id.Names);
             if(cardView==null){
                 Log.d("Null","Null");
