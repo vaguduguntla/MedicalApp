@@ -3,12 +3,14 @@ package com.example.medicalapp.fragments;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.medicalapp.CalendarActivity;
@@ -16,6 +18,7 @@ import com.example.medicalapp.Doctor;
 import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
+;
 
 import java.util.ArrayList;
 
@@ -78,6 +81,17 @@ public class AddNewRecordFragment extends Fragment {
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode ==  1) {
+            if (resultCode == getActivity().RESULT_OK) {
+                TextView dateView = getView().findViewById(R.id.add_record_date_edit_text);
+                dateView.setText(data.getStringExtra("date"));
+            }
+        }
+    }
+
+    @Override
     public void onViewCreated(View view, final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //date stuff
@@ -91,7 +105,7 @@ public class AddNewRecordFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CalendarActivity.class);
                 intent.putExtra("AddPatientfragmentBundle",savedInstanceState);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
 
@@ -102,5 +116,6 @@ public class AddNewRecordFragment extends Fragment {
 
         TextView doctorName = view.findViewById(R.id.add_record_doc_name_inputField);
         doctorName.setText(((MainActivity)getActivity()).rootDoctor.getName());
+        doctorName.setEnabled(false);
     }
 }
