@@ -7,13 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.MedicalRecord;
+import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
 import com.example.medicalapp.okhttp;
 
@@ -31,7 +34,7 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
     private static final String ARG_PARAM1 = "rid";
 
     // TODO: Rename and change types of parameters
-    private String rid;
+    private Patient patient;
 
     public MedicalRecordsFragment() {
         // Required empty public constructor
@@ -39,6 +42,10 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
     RecyclerView recyclerView;
 
     //String n1[], n2[], n3[], n4[];
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -48,21 +55,16 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MedicalRecordsFragment newInstance(String rid) {
+    public static MedicalRecordsFragment newInstance(Patient p) {
         MedicalRecordsFragment fragment = new MedicalRecordsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, rid);
+        fragment.setPatient(p);
 
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            rid = getArguments().getString(ARG_PARAM1);
-        }
     }
 
     @Override
@@ -88,7 +90,7 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
         type_to_record.put("Doctors Notes",new ArrayList<MedicalRecord>());
 
         okhttp ok = new okhttp();
-        ok.appendUrl("all_records_pid="+rid);
+        ok.appendUrl("all_records_pid="+patient.getPID());
 
         try {
             String[] data = ok.run_request_and_handle_response(null);
@@ -120,19 +122,6 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
             e.printStackTrace();
         }
 
-        /*for(int i =0; i<n1.length; i++){
-            MedicalRecord newRecord = new MedicalRecord("1", null,n1[i],n3[i], n4[i]);
-            MedicalRecordsList.add(newRecord);
-            doctor_names.add(n4[i]);
-            type_to_record.get(n2[i]).add(newRecord);
-            if (doctor_names_to_records.containsKey(n4[i])) {
-                doctor_names_to_records.get(n4[i]).add(newRecord);
-            }
-            else {
-                doctor_names_to_records.put(n4[i],new ArrayList<MedicalRecord>(Arrays.asList(newRecord)));
-            }
-        }*/
-
         recyclerView = view.findViewById(R.id.medical_records_recycler_view);
         MedicalRecordsRecyclerViewAdapter adapter = new MedicalRecordsRecyclerViewAdapter(getContext(),MedicalRecordsList, doctor_names_to_records, type_to_record);
         recyclerView.setAdapter(adapter);
@@ -151,6 +140,15 @@ public class MedicalRecordsFragment extends PatientProfileFragment implements Ad
         doctor_name_filter.setOnItemSelectedListener(this);
         AdapterView record_type_filter = (AdapterView) view.findViewById(R.id.type_spinner);
         record_type_filter.setOnItemSelectedListener(this);
+
+        Button addRecordButton = view.findViewById(R.id.add_record_button);
+
+        addRecordButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                MainActivity currentActivity = (MainActivity) v.getContext();
+                currentActivity.openFragment(AddNewRecordFragment.newInstance(patient));
+            }
+        });
     }
 
     @Override

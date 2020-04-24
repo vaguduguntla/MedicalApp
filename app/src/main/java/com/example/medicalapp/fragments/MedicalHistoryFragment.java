@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.CalendarActivity;
 import com.example.medicalapp.MedicalHistory;
+import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
 import com.example.medicalapp.okhttp;
 
@@ -35,9 +36,7 @@ public class MedicalHistoryFragment extends Fragment {
 
 
     // TODO: Rename and change types of parameters
-    private String hid;
-
-
+    private Patient patient;
 
     RecyclerView recyclerView;
     ArrayList<MedicalHistory> MedicalHistoryList = new ArrayList<>();
@@ -51,6 +50,11 @@ public class MedicalHistoryFragment extends Fragment {
         // Required empty public constructor
     }
 
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -60,22 +64,16 @@ public class MedicalHistoryFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MedicalHistoryFragment newInstance(String hid) {
+    public static MedicalHistoryFragment newInstance(Patient p) {
         MedicalHistoryFragment fragment = new MedicalHistoryFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, hid);
+        fragment.setPatient(p);
 
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            hid = getArguments().getString(ARG_PARAM1);
-        }
-
     }
 
     @Override
@@ -91,7 +89,7 @@ public class MedicalHistoryFragment extends Fragment {
         endDate = view.findViewById(R.id.ED_MHM);
 
         okhttp ok =  new okhttp();
-        ok.appendUrl("all_history_pid="+hid);
+        ok.appendUrl("all_history_pid="+patient.getPID());
         try{
             String data[] = ok.run_request_and_handle_response(null);
             JSONArray jsonArr = new JSONArray(data[0]);

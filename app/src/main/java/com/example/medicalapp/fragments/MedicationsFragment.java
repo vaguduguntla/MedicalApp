@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.Medication;
+import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
 import com.example.medicalapp.okhttp;
 
@@ -29,12 +30,16 @@ public class MedicationsFragment extends Fragment {
     private static final String ARG_PARAM1 = "mid";
 
     // TODO: Rename and change types of parameters
-    private String mid;
+    Patient patient;
     ArrayList<Medication> MedicationList = new ArrayList<>();
     RecyclerView recyclerView;
 
     public MedicationsFragment() {
         // Required empty public constructor
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     /**
@@ -45,20 +50,15 @@ public class MedicationsFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MedicationsFragment newInstance(String mid) {
+    public static MedicationsFragment newInstance(Patient p) {
         MedicationsFragment fragment = new MedicationsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, mid);
-        fragment.setArguments(args);
+        fragment.setPatient(p);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mid = getArguments().getString(ARG_PARAM1);
-        }
     }
 
     @Override
@@ -71,7 +71,7 @@ public class MedicationsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         recyclerView = view.findViewById(R.id.medical_history_medications_recyclerView);
         okhttp ok = new okhttp();
-        ok.appendUrl("all_meds_pid="+mid);
+        ok.appendUrl("all_meds_pid="+patient.getPID());
         try {
             String[] data = ok.run_request_and_handle_response(null);
             JSONArray jsonArr = new JSONArray(data[0]);

@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.medicalapp.CalendarActivity;
 import com.example.medicalapp.Doctor;
+import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class AddNewRecordFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    Patient patient;
+
     ArrayList<Doctor> allDoctorsList;
     TextView displayDate;
     ImageView calendarImage;
@@ -43,6 +46,10 @@ public class AddNewRecordFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -52,22 +59,15 @@ public class AddNewRecordFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AddNewRecordFragment newInstance(String param1, String param2) {
+    public static AddNewRecordFragment newInstance(Patient p) {
         AddNewRecordFragment fragment = new AddNewRecordFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+        fragment.setPatient(p);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override

@@ -64,7 +64,7 @@ public class PatientProfileFragment extends Fragment {
             public void onClick(View v){
                 //Inflate New View
                 MainActivity currentActivity = (MainActivity)getActivity();
-                currentActivity.openFragment(MedicalRecordsFragment.newInstance(patient.getPID()));
+                currentActivity.openFragment(MedicalRecordsFragment.newInstance(patient));
             }
         });
         medicalHistoryButton.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +72,7 @@ public class PatientProfileFragment extends Fragment {
             public void onClick(View v){
                 //Inflate New View
                 MainActivity currentActivity = (MainActivity)getActivity();
-                currentActivity.openFragment(MedicalHistoryFragment.newInstance(patient.getPID()));
+                currentActivity.openFragment(MedicalHistoryFragment.newInstance(patient));
             }
         });
         medicationsButton.setOnClickListener(new View.OnClickListener() {
@@ -80,11 +80,19 @@ public class PatientProfileFragment extends Fragment {
             public void onClick(View v){
                 //Inflate New View
                 MainActivity currentActivity = (MainActivity)getActivity();
-                currentActivity.openFragment(MedicationsFragment.newInstance(patient.getPID()));
+                currentActivity.openFragment(MedicationsFragment.newInstance(patient));
             }
         });
 
         TextView title = view.findViewById(R.id.patient_profile_title);
-        title.setText(patient.getName() + "(" + patient.getGender() + ", " + patient.getAge() + ")");
+        String gender;
+        if (patient.getGender().equals("1")) {
+            gender = "male";
+        }
+        else {
+            gender = "female";
+        }
+
+        title.setText(patient.getName() + " (" + gender + ", " + patient.getAge() + ")");
     }
 }
