@@ -3,7 +3,6 @@ package com.example.medicalapp.fragments;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +17,10 @@ import com.example.medicalapp.Doctor;
 import com.example.medicalapp.MainActivity;
 import com.example.medicalapp.Patient;
 import com.example.medicalapp.R;
-;
 
 import java.util.ArrayList;
+
+;
 
 /**
  * A simple {@link Fragment} subclass.

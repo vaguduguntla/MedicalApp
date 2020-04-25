@@ -1,6 +1,7 @@
 package com.example.medicalapp.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicalapp.Doctor;
 import com.example.medicalapp.R;
+import com.example.medicalapp.okhttp;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -25,13 +30,13 @@ public class AddDoctorFragment extends Fragment implements SearchView.OnQueryTex
 
     // TODO: Rename and change types of parameters
     private String did;
-    ArrayList<Doctor> AllDoctorsList;
+    ArrayList<Doctor> AllDoctorsList = new ArrayList<>();
     String SpecialityList[] = new String[]{"Proctologist", "Cardiologist", "Oncologist", "Cosmetic Surgeon", "Pedatrition"};
     String LocationList[] = new String[]{"Bloomfield Hills", "Ann Arbor", "New York", "London", "Bangkok"};
 
     int img = R.drawable.ic_add_box_black_24dp;
     RecyclerView recyclerView;
-    DoctorRecyclerViewAdapter doctorRecyclerViewAdapter;
+    AddDoctorRecyclerViewAdapter doctorRecyclerViewAdapter;
 
 
 
@@ -73,6 +78,20 @@ public class AddDoctorFragment extends Fragment implements SearchView.OnQueryTex
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
+        //Populate Doctors list
+        okhttp ok = new okhttp();
+        ok.appendUrl("all_doctors");
+        try {
+            String[] data = ok.run_request_and_handle_response(null);
+            JSONArray jsonArr = new JSONArray(data[0]);
+
+            for (int i=0;i<jsonArr.length();++i) {
+                AllDoctorsList.add(new Doctor(jsonArr.getJSONObject(i).getString("did"),jsonArr.getJSONObject(i).getString("name"), jsonArr.getJSONObject(i).getString("specialty")));
+            }
+            Log.d("data",data[0]);
+        } catch (InterruptedException | JSONException e) {
+            e.printStackTrace();
+        }
         //AutoComplete Stuff
         AutoCompleteTextView specialityACTV = view.findViewById(R.id.specialty_autocompleteTextView);
         AutoCompleteTextView locationACTV = view.findViewById(R.id.location_add_doctor_autocompleteTextView);
@@ -82,7 +101,7 @@ public class AddDoctorFragment extends Fragment implements SearchView.OnQueryTex
         locationACTV.setAdapter(locationAdapter);
         //RecyclerView Stuff
         recyclerView = view.findViewById(R.id.addDrRecyclerView);
-        doctorRecyclerViewAdapter = new DoctorRecyclerViewAdapter(AllDoctorsList, getContext(), img);
+        doctorRecyclerViewAdapter = new AddDoctorRecyclerViewAdapter(getContext(), AllDoctorsList);
         recyclerView.setAdapter(doctorRecyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

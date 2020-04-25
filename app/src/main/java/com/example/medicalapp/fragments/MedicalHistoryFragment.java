@@ -141,7 +141,7 @@ public class MedicalHistoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CalendarActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
 
 
             }
@@ -151,7 +151,7 @@ public class MedicalHistoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CalendarActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
 
 
             }
