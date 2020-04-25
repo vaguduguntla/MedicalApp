@@ -40,8 +40,7 @@ public class MedicalHistoryFragment extends Fragment {
 
     RecyclerView recyclerView;
     ArrayList<MedicalHistory> MedicalHistoryList = new ArrayList<>();
-    Intent startDateIntent;
-    Intent endDateIntent;
+
     TextView startDate;
     TextView endDate;
 
@@ -117,6 +116,7 @@ public class MedicalHistoryFragment extends Fragment {
         //Calendar Stuff
         ImageView startCalendar = view.findViewById(R.id.startDate_Calendar_Button);
         ImageView endCalendar = view.findViewById(R.id.End_Date_Calendar_Button);
+        ImageView plusButton = view.findViewById(R.id.add_history_medication);
 
         Button addHistoryButton = view.findViewById(R.id.add_medicalHistory_medications_button);
 
@@ -125,31 +125,38 @@ public class MedicalHistoryFragment extends Fragment {
         addHistoryButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 getView().findViewById(R.id.add_history_medication_layout).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.medical_history_medications_recyclerView).setVisibility(View.INVISIBLE);
             }
         });
+        Intent incomingIntent = getActivity().getIntent();
+
+        if(startDate == null){
+            startDate.setText(incomingIntent.getStringExtra("date"));
+        }
+        else{
+            endDate.setText(incomingIntent.getStringExtra("date"));
+        }
 
         startCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CalendarActivity.class);
                 startActivity(intent);
-                startDateIntent = getActivity().getIntent();
-                startDate.setText(startDateIntent.getStringExtra("date"));
+
 
             }
 
         });
-
         endCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CalendarActivity.class);
                 startActivity(intent);
-                endDateIntent = getActivity().getIntent();
-                endDate.setText(endDateIntent.getStringExtra("date"));
+
 
             }
         });
+
 
     }
 }

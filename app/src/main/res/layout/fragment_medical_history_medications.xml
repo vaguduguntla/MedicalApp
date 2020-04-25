@@ -17,8 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="105dp"
         android:layout_marginBottom="4dp"
-        android:visibility="invisible"
         android:clickable="true"
+        android:focusable="true"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/add_medicalHistory_medications_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -37,10 +38,10 @@
           android:id="@+id/End_Date_Calendar_Button"
           android:layout_width="55dp"
           android:layout_height="45dp"
-          android:layout_marginStart="12dp"
+          android:layout_marginEnd="4dp"
           android:clickable="true"
           android:src="@drawable/ic_today_black_24dp"
-          app:layout_constraintStart_toEndOf="@+id/startDate_Calendar_Button"
+          app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/ED_MHM" />
 
       <EditText
@@ -48,9 +49,10 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginStart="50dp"
+          android:editable="true"
           android:ems="10"
+          android:hint="Name of Whatever"
           android:inputType="textPersonName"
-          android:text="Name"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
@@ -82,26 +84,23 @@
           android:id="@+id/ED_MHM"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginStart="12dp"
           android:layout_marginTop="16dp"
+          android:layout_marginEnd="8dp"
           android:text="End Date:"
           android:textSize="12sp"
-          app:layout_constraintStart_toEndOf="@+id/SD_MHM"
+          app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/medical_history_medications_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginBottom="75dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_medicalHistory_medications_button"
+        android:layout_height="300dp"
+        android:layout_marginTop="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034" />
+        app:layout_constraintTop_toBottomOf="@+id/ownership_textView" />
 
     <Button
         android:id="@+id/add_medicalHistory_medications_button"
@@ -117,25 +116,25 @@
         android:id="@+id/ownership_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="168dp"
         android:text="TextView"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/medical_history_medications_recyclerView"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/page_type_textView" />
 
     <TextView
         android:id="@+id/page_type_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginTop="24dp"
         android:text="TextView"
+        android:textAlignment="viewStart"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/medical_history_medications_recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.634"
-        app:layout_constraintStart_toEndOf="@+id/ownership_textView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
